@@ -1,8 +1,12 @@
 import { motion } from "framer-motion"
+import { portfolioStats } from "../data/products"
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#07111a] px-4 pb-16 pt-28 sm:px-6 lg:px-8"
+    >
 
       {/* ================= MESH GRADIENT BACKGROUND ================= */}
       <div className="absolute inset-0 overflow-hidden">
@@ -21,7 +25,7 @@ export default function Hero() {
             left: "10%",
             width: "300px",
             height: "300px",
-            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 40%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(64, 196, 255, 0.34) 0%, rgba(64, 196, 255, 0.16) 40%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -40,7 +44,7 @@ export default function Hero() {
             right: "15%",
             width: "250px",
             height: "250px",
-            background: "radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(37, 99, 235, 0.15) 40%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255, 169, 112, 0.28) 0%, rgba(255, 169, 112, 0.12) 40%, transparent 70%)",
             filter: "blur(70px)",
           }}
         />
@@ -57,7 +61,7 @@ export default function Hero() {
           style={{
             width: "400px",
             height: "400px",
-            background: "radial-gradient(circle, rgba(96, 165, 250, 0.45) 0%, rgba(96, 165, 250, 0.25) 35%, transparent 65%)",
+            background: "radial-gradient(circle, rgba(103, 232, 249, 0.26) 0%, rgba(103, 232, 249, 0.14) 35%, transparent 65%)",
             filter: "blur(80px)",
           }}
         />
@@ -76,7 +80,7 @@ export default function Hero() {
             left: "20%",
             width: "350px",
             height: "350px",
-            background: "radial-gradient(circle, rgba(147, 197, 253, 0.4) 0%, rgba(147, 197, 253, 0.2) 40%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(129, 140, 248, 0.22) 0%, rgba(129, 140, 248, 0.1) 40%, transparent 70%)",
             filter: "blur(75px)",
           }}
         />
@@ -95,7 +99,7 @@ export default function Hero() {
             right: "10%",
             width: "380px",
             height: "380px",
-            background: "radial-gradient(circle, rgba(34, 211, 238, 0.35) 0%, rgba(34, 211, 238, 0.15) 40%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(244, 114, 182, 0.18) 0%, rgba(244, 114, 182, 0.08) 40%, transparent 70%)",
             filter: "blur(65px)",
           }}
         />
@@ -104,75 +108,95 @@ export default function Hero() {
         <div 
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse at center, transparent 0%, rgba(255, 255, 255, 0.3) 100%)",
+            background: "radial-gradient(ellipse at center, transparent 0%, rgba(7, 17, 26, 0.26) 100%)",
           }}
         />
       </div>
-
-      {/* ================= NAVBAR ================= */}
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="absolute top-4 sm:top-6 md:top-8 left-1/2 -translate-x-1/2 z-20 w-full max-w-6xl px-4"
-      >
-        <div className="flex items-center justify-center gap-1 px-2 py-2 rounded-full bg-gray-900/5 backdrop-blur-md border border-gray-900/10 mx-auto w-fit">
-          {["Home", "Products", "About Us", "Contact"].map((item) => (
-            <button
-              key={item}
-              className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm text-gray-800 hover:bg-gray-900/10 hover:text-gray-900 transition-all whitespace-nowrap"
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </motion.nav>
 
       {/* ================= CONTENT ================= */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={container}
-        className="relative z-10 text-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+        className="relative z-10 mx-auto grid max-w-7xl items-end gap-10 px-2 sm:px-4 lg:grid-cols-[1.15fr_0.85fr] lg:px-0"
       >
-        <motion.h1
-          variants={item}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 tracking-tight leading-tight"
-        >
-          Apps & Extensions
-          <br />
-          Built for Modern Work
-        </motion.h1>
+        <div className="text-left">
+          <motion.p
+            variants={item}
+            className="font-mono text-xs uppercase tracking-[0.34em] text-cyan-300"
+          >
+            Dashovia Product Portfolio
+          </motion.p>
 
-        <motion.p
-          variants={item}
-          className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4"
-        >
-          Dashovia builds fast, minimal, and reliable digital products
-          <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          designed to simplify everyday workflows.
-        </motion.p>
+          <motion.h1
+            variants={item}
+            className="mt-4 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-[5.3rem]"
+          >
+            APIs and extensions built to be launched, packaged, and sold.
+          </motion.h1>
 
-        <motion.div
-          variants={item}
-          className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4"
-        >
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl text-sm sm:text-base">
-            Explore Products
-          </button>
+          <motion.p
+            variants={item}
+            className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg"
+          >
+            Dashovia now brings the real catalog onto the site: live FastAPI
+            products, VS Code extensions, Chrome tools, and workflow software
+            already built across the portfolio.
+          </motion.p>
 
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gray-900 text-white font-medium hover:bg-gray-800 transition-all shadow-lg text-sm sm:text-base">
-            Contact Us
-          </button>
-        </motion.div>
+          <motion.div
+            variants={item}
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
+            <a
+              href="#apis"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-slate-900 transition hover:bg-slate-100 sm:w-auto"
+            >
+              Explore APIs
+            </a>
+            <a
+              href="#extensions"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+            >
+              Browse Extensions
+            </a>
+          </motion.div>
 
-        <motion.p
+          <motion.div
+            variants={item}
+            className="mt-10 grid gap-4 sm:grid-cols-3"
+          >
+            <StatCard value={portfolioStats.apiCount} label="Live APIs" />
+            <StatCard value={portfolioStats.extensionCount} label="Extensions" />
+            <StatCard value={portfolioStats.totalCount} label="Products Listed" />
+          </motion.div>
+        </div>
+
+        <motion.aside
           variants={item}
-          className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500"
+          className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 text-left shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-8"
         >
-          Product-focused • Performance-driven • Built to scale
-        </motion.p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-orange-300">
+            What’s on this page
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            A catalog built for actual buyer conversations.
+          </h2>
+          <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-300 sm:text-base">
+            <li className="flex gap-3">
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-300" />
+              Product cards for the live Dashovia API lineup with working routes.
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange-300" />
+              The full extension portfolio across VS Code and Chrome.
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-pink-300" />
+              Clear paths for docs, demos, private access, and product inquiries.
+            </li>
+          </ul>
+        </motion.aside>
       </motion.div>
 
       {/* ================= NOISE ================= */}
@@ -183,6 +207,17 @@ export default function Hero() {
         }}
       />
     </section>
+  )
+}
+
+function StatCard({ value, label }) {
+  return (
+    <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+      <span className="block text-3xl font-semibold text-white sm:text-4xl">{value}</span>
+      <span className="mt-2 block font-mono text-[0.68rem] uppercase tracking-[0.26em] text-slate-400">
+        {label}
+      </span>
+    </div>
   )
 }
 
