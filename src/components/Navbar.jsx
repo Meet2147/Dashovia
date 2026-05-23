@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import siteLogo from "../assets/brand/dashovia-logo-final-03.jpg"
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -26,7 +27,7 @@ export default function Navbar() {
         >
           {/* LOGO */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-cyan-400 via-sky-400 to-orange-300" />
+            <BrandMark />
             <div className="text-left">
               <p className="text-sm font-semibold tracking-tight text-white">Dashovia</p>
               <p className="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-slate-400">
@@ -57,7 +58,7 @@ export default function Navbar() {
         >
           {/* LOGO */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 via-sky-400 to-orange-300" />
+            <BrandMark compact />
             <span className="text-sm font-semibold tracking-tight text-white">Dashovia</span>
           </div>
 
@@ -144,5 +145,21 @@ function MobileNavItem({ label, href, onClick }) {
     >
       {label}
     </a>
+  )
+}
+
+function BrandMark({ compact = false }) {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.18)] ${
+        compact ? "h-9 w-9" : "h-10 w-10 md:h-11 md:w-11"
+      }`}
+    >
+      <img
+        src={siteLogo}
+        alt="Dashovia logo"
+        className="absolute left-1/2 top-1/2 h-[205%] w-[205%] max-w-none -translate-x-1/2 -translate-y-[37%] object-cover"
+      />
+    </div>
   )
 }

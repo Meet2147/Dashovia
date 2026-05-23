@@ -176,6 +176,19 @@ export default function Hero() {
           variants={item}
           className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 text-left shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-8"
         >
+          <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.05] px-4 py-3">
+            <img
+              src="/brand/dashovia-logo-mark-white.jpg"
+              alt="Dashovia mark"
+              className="h-10 w-10 rounded-xl border border-slate-200 bg-white object-cover"
+            />
+            <div>
+              <p className="text-sm font-semibold tracking-tight text-white">Dashovia</p>
+              <p className="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-slate-400">
+                Brand Mark
+              </p>
+            </div>
+          </div>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-orange-300">
             What’s on this page
           </p>
