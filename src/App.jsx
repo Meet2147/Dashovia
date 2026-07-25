@@ -6,7 +6,7 @@ import Contact from "./components/Contact"
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#07111a] text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-[var(--surface)] text-[var(--ink)]">
       <Navbar />
       <Hero />
       <Explore />

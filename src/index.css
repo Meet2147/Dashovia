@@ -1,1 +1,112 @@
 @import "tailwindcss";
+
+/* ==========================================================================
+   DASHOVIA — Minimal Neumorphic Design System
+   A single calm surface, soft dual shadows, monochrome + one quiet accent.
+   ========================================================================== */
+
+@theme {
+  --color-surface: #e6eaf1;
+  --color-ink: #3a4256;
+  --color-ink-soft: #7b8598;
+  --color-accent: #0a8ff5;
+}
+
+:root {
+  /* Base surface everything sits on */
+  --surface: #e6eaf1;
+
+  /* Dual-shadow tones derived from the surface — kept soft/low-contrast
+     for a flat, minimal neumorphic feel. */
+  --shadow-dark: #ced4e0;
+  --shadow-light: #ffffff;
+
+  /* Text */
+  --ink: #3a4256;
+  --ink-soft: #7b8598;
+  --ink-faint: #9aa3b4;
+
+  /* One restrained accent — sampled from the Dashovia logo blue */
+  --accent: #0a8ff5;
+  --accent-soft: #6fbcfb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Neumorphic surfaces --------------------------------------------------
+   Raised = element sits above the surface (light top-left, dark bottom-right).
+   Pressed/inset = element carved into the surface.
+   -------------------------------------------------------------------------- */
+
+.neo-raised {
+  background: var(--surface);
+  box-shadow: 4px 4px 11px var(--shadow-dark), -4px -4px 11px var(--shadow-light);
+}
+
+.neo-raised-sm {
+  background: var(--surface);
+  box-shadow: 3px 3px 7px var(--shadow-dark), -3px -3px 7px var(--shadow-light);
+}
+
+.neo-inset {
+  background: var(--surface);
+  box-shadow: inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light);
+}
+
+/* Interactive: raised at rest, deepens gently on hover, presses in on active */
+.neo-interactive {
+  background: var(--surface);
+  box-shadow: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
+  transition: box-shadow 0.28s ease, transform 0.28s ease, color 0.2s ease;
+}
+.neo-interactive:hover {
+  box-shadow: 6px 6px 13px var(--shadow-dark), -6px -6px 13px var(--shadow-light);
+}
+.neo-interactive:active {
+  box-shadow: inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light);
+}
+
+/* Solid accent button (the single high-emphasis action style) */
+.neo-accent {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+.neo-accent:hover {
+  box-shadow: 6px 6px 13px var(--shadow-dark), -6px -6px 13px var(--shadow-light);
+  transform: translateY(-1px);
+}
+.neo-accent:active {
+  transform: translateY(0);
+  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.18),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.12);
+}
+
+/* Small circular accent dot */
+.neo-dot {
+  box-shadow: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
