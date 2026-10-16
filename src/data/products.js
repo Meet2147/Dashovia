@@ -256,8 +256,48 @@ export const extensionProducts = [
   },
 ]
 
+
+export const TERMS_OF_USE_URL = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+
+// Static assets live in public/apps/<slug>/; each app's privacy policy is a
+// plain HTML page at /apps/<slug>/privacy/ so App Store links never depend
+// on client-side routing.
+export const appProducts = [
+  {
+    slug: "brahma-muhurat",
+    name: "Brahma Muhurat",
+    tagline: "Wake with the sky, not the clock.",
+    category: "Spiritual Wellness",
+    status: "Coming soon",
+    platforms: ["iPhone", "iPad", "Apple Watch"],
+    summary:
+      "Most alarms ring at 5:00. Brahma Muhurat rings for the 48 minutes before sunrise, calculated for your city and shifting with the sun through the year.",
+    highlights: [
+      "Sunrise-aware alarms with temple bell, shankh and Om",
+      "108-bead japa mala you can count with eyes closed",
+      "Daily panchang, Dhyana timer and practice history",
+    ],
+    icon: "/apps/brahma-muhurat/icon.png",
+    video: "/apps/brahma-muhurat/preview.mp4",
+    poster: "/apps/brahma-muhurat/poster.webp",
+    screenshots: [
+      { src: "/apps/brahma-muhurat/screens/01-today.webp", alt: "Today screen with the Brahma Muhurat countdown" },
+      { src: "/apps/brahma-muhurat/screens/02-japa.webp", alt: "Japa mala counter" },
+      { src: "/apps/brahma-muhurat/screens/03-history.webp", alt: "Practice history heatmap" },
+      { src: "/apps/brahma-muhurat/screens/04-panchang.webp", alt: "Daily panchang" },
+      { src: "/apps/brahma-muhurat/screens/05-alarms.webp", alt: "Sunrise-based alarms" },
+      { src: "/apps/brahma-muhurat/screens/06-dhyana.webp", alt: "Dhyana meditation timer" },
+    ],
+    // Set once the App Store listing is live.
+    appStoreUrl: null,
+    privacyUrl: "/apps/brahma-muhurat/privacy/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meet@thelabs.co.in",
+  },
+]
+
 export const portfolioStats = {
   apiCount: apiProducts.length,
   extensionCount: extensionProducts.length,
-  totalCount: apiProducts.length + extensionProducts.length,
+  totalCount: apiProducts.length + extensionProducts.length + appProducts.length,
 }

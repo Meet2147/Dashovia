@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import Explore from "./components/Explore"
 import Preview from "./components/Preview"
+import Apps from "./components/Apps"
 import Contact from "./components/Contact"
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <Hero />
       <Explore />
       <Preview />
+      <Apps />
       <Contact />
     </div>
   )
