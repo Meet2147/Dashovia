@@ -294,6 +294,36 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "meet@thelabs.co.in",
   },
+  {
+    slug: "audiolift",
+    name: "AudioLift",
+    tagline: "Lift the audio out of any video.",
+    category: "Audio Utility",
+    status: "Coming soon",
+    platforms: ["iPhone", "iPad"],
+    summary:
+      "Got a video but only want the sound? AudioLift extracts the audio on your device, lets you trim it on the waveform and converts whole batches at once. Nothing gets uploaded.",
+    highlights: [
+      "Waveform trimming with selection preview",
+      "M4A, WAV, AIFF and CAF output",
+      "Batch extraction and a saved audio library",
+    ],
+    icon: "/apps/audiolift/icon.png",
+    video: "/apps/audiolift/preview.mp4",
+    poster: "/apps/audiolift/poster.webp",
+    screenshots: [
+      { src: "/apps/audiolift/screens/01-home.webp", alt: "Home screen for picking a video" },
+      { src: "/apps/audiolift/screens/02-editor.webp", alt: "Waveform editor with trim handles" },
+      { src: "/apps/audiolift/screens/03-result.webp", alt: "Extracted audio ready to share" },
+      { src: "/apps/audiolift/screens/04-batch.webp", alt: "Batch extraction of several videos" },
+      { src: "/apps/audiolift/screens/05-library.webp", alt: "Library of extracted audio" },
+      { src: "/apps/audiolift/screens/06-settings.webp", alt: "Settings with default audio format" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/audiolift/privacy/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meet@thelabs.co.in",
+  },
 ]
 
 export const portfolioStats = {
