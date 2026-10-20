@@ -324,6 +324,36 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "meet@thelabs.co.in",
   },
+  {
+    slug: "crumbs",
+    name: "Crumbs: Lock In & Focus",
+    tagline: "Tiny crumbs. Real discipline.",
+    category: "Productivity",
+    status: "Coming soon",
+    platforms: ["iPhone", "iPad", "Mac", "Apple Watch"],
+    summary:
+      "Can't start? Break the work into 5–25 minute crumbs, run a timer for one at a time and tick a box when it's done. Small wins every few minutes turn focus into a habit.",
+    highlights: [
+      "Focus timer with tickable crumb boxes and confetti",
+      "Streaks, weekly stats and unlockable box camos",
+      "Syncs over iCloud, with Apple Watch and widgets",
+    ],
+    icon: "/apps/crumbs/icon.png",
+    video: "/apps/crumbs/preview.mp4",
+    poster: "/apps/crumbs/poster.webp",
+    screenshots: [
+      { src: "/apps/crumbs/screens/01-notebook.webp", alt: "Notebook of today's focus sessions" },
+      { src: "/apps/crumbs/screens/02-focus-timer.webp", alt: "Focus timer counting down a crumb" },
+      { src: "/apps/crumbs/screens/03-tick-reward.webp", alt: "Ticking a finished crumb" },
+      { src: "/apps/crumbs/screens/04-camos.webp", alt: "Unlockable box camos" },
+      { src: "/apps/crumbs/screens/05-stats.webp", alt: "Streaks and weekly stats" },
+      { src: "/apps/crumbs/screens/06-new-session.webp", alt: "Creating a new focus session" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/crumbs/privacy/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meetjethwa3@gmail.com",
+  },
 ]
 
 export const portfolioStats = {
