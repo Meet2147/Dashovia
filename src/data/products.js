@@ -362,9 +362,9 @@ export const appProducts = [
     status: "Coming soon",
     platforms: ["iPhone"],
     summary:
-      "Spill a problem and get a page from a real book that's been through it: Chanakya Niti, Vidur Niti, the Stoics, the Gita, Atomic Habits and 130 more. Then three tiny moves and a check-in a few days later.",
+      "Spill a problem and get a page from a real book that's been through it: Chanakya Niti, Vidur Niti, the Stoics, the Gita, Atomic Habits and 300 more. Then three tiny moves and a check-in a few days later.",
     highlights: [
-      "A real page from 136 books, translated into how you actually talk",
+      "A real page from 300+ books, translated into how you actually talk",
       "Three small moves and a check-in that follows up",
       "History stays on your iPhone; answers are never stored",
     ],
