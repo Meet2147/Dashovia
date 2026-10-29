@@ -354,6 +354,37 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "meetjethwa3@gmail.com",
   },
+  {
+    slug: "sapience",
+    name: "Sapience: Book Wisdom for Life",
+    tagline: "Your problem has a chapter.",
+    category: "Lifestyle",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "Spill a problem and get a page from a real book that's been through it: Chanakya Niti, Vidur Niti, the Stoics, the Gita, Atomic Habits and 130 more. Then three tiny moves and a check-in a few days later.",
+    highlights: [
+      "A real page from 136 books, translated into how you actually talk",
+      "Three small moves and a check-in that follows up",
+      "History stays on your iPhone; answers are never stored",
+    ],
+    icon: "/apps/sapience/icon.png",
+    video: "/apps/sapience/preview.mp4",
+    poster: "/apps/sapience/poster.webp",
+    screenshots: [
+      { src: "/apps/sapience/screens/01-chapter.webp", alt: "A Chanakya Niti page answering a problem about a two-faced friend" },
+      { src: "/apps/sapience/screens/02-spill.webp", alt: "Spilling a problem in the chat" },
+      { src: "/apps/sapience/screens/03-moves.webp", alt: "Three ticked moves and a check-in" },
+      { src: "/apps/sapience/screens/04-solved.webp", alt: "Marking a problem solved with confetti" },
+      { src: "/apps/sapience/screens/05-shelf.webp", alt: "The shelf of past problems" },
+      { src: "/apps/sapience/screens/06-packs.webp", alt: "Question packs, no subscription" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/sapience/privacy/",
+    supportUrl: "/apps/sapience/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meetjethwa3@gmail.com",
+  },
 ]
 
 export const portfolioStats = {
