@@ -385,6 +385,36 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "meetjethwa3@gmail.com",
   },
+  {
+    slug: "cartlater",
+    name: "Cart Later",
+    tagline: "Stop impulse buys.",
+    category: "Finance",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "Enter your salary once and Cart Later plans the month: bills, savings, investing, a wishlist jar and fun money. Share any Amazon, Flipkart, Myntra or AJIO link and it tells you exactly when you can buy it, without the scary card bill.",
+    highlights: [
+      "Share a product link and get a real \"you can buy it on\" date",
+      "Impulse check: a verdict before you tap Buy Now",
+      "No account or bank login; everything stays on your iPhone",
+    ],
+    icon: "/apps/cartlater/icon.png",
+    video: "/apps/cartlater/preview.mp4",
+    poster: "/apps/cartlater/poster.webp",
+    screenshots: [
+      { src: "/apps/cartlater/screens/01-home.webp", alt: "Home with fun money left, the wishlist jar and the next item in the cart" },
+      { src: "/apps/cartlater/screens/02-cart.webp", alt: "The cart with a buy date for each item" },
+      { src: "/apps/cartlater/screens/03-impulse.webp", alt: "An impulse check verdict: you can… but" },
+      { src: "/apps/cartlater/screens/04-plan.webp", alt: "The monthly plan split into needs, savings, wishlist and fun" },
+      { src: "/apps/cartlater/screens/05-wins.webp", alt: "Wins showing money dodged" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/cartlater/privacy/",
+    supportUrl: "/apps/cartlater/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meetjethwa3@gmail.com",
+  },
 ]
 
 export const portfolioStats = {

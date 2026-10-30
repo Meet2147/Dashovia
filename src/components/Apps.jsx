@@ -107,7 +107,7 @@ function AppCard({ app }) {
               Terms of Use
             </a>
             <a
-              href={`mailto:${app.supportEmail}`}
+              href={app.supportUrl ?? `mailto:${app.supportEmail}`}
               className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
             >
               Support
