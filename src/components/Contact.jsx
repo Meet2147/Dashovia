@@ -14,7 +14,7 @@ const contactLinks = [
   {
     label: "Focus",
     value: "Deploy, demo, or white-label",
-    href: "#apis",
+    href: "#extensions",
   },
 ]
 
@@ -35,7 +35,7 @@ export default function Contact() {
           Want one of these products live under its own offer?
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--ink-soft)] sm:text-lg">
-          We can package individual APIs, extension launches, private demos, or
+          We can package individual extensions, app launches, private demos, or
           branded deployments — sell one product, bundle several, or spin up a
           dedicated landing flow.
         </p>

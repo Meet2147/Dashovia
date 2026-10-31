@@ -24,15 +24,15 @@ export default function Hero() {
           variants={item}
           className="mx-auto mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-[var(--ink)] sm:text-5xl lg:text-6xl"
         >
-          APIs and extensions, built to be launched and sold.
+          Extensions and apps, built to be launched and sold.
         </motion.h1>
 
         <motion.p
           variants={item}
           className="mx-auto mt-6 max-w-xl text-base leading-7 text-[var(--ink-soft)] sm:text-lg"
         >
-          A single, honest catalog of the live FastAPI products and editor
-          extensions already built across the Dashovia portfolio.
+          A single, honest catalog of the editor extensions and apps already
+          built across the Dashovia portfolio.
         </motion.p>
 
         <motion.div
@@ -40,16 +40,16 @@ export default function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="#apis"
+            href="#extensions"
             className="neo-accent inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold"
           >
-            Explore APIs
+            Browse Extensions
           </a>
           <a
-            href="#extensions"
+            href="#apps"
             className="neo-interactive inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold text-[var(--ink)]"
           >
-            Browse Extensions
+            See Apps
           </a>
         </motion.div>
 
@@ -57,8 +57,8 @@ export default function Hero() {
           variants={item}
           className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-4 sm:gap-6"
         >
-          <StatCard value={portfolioStats.apiCount} label="Live APIs" />
           <StatCard value={portfolioStats.extensionCount} label="Extensions" />
+          <StatCard value={portfolioStats.appCount} label="Apps" />
           <StatCard value={portfolioStats.totalCount} label="Products" />
         </motion.div>
       </motion.div>

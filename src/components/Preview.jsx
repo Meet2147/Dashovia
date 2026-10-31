@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { extensionProducts } from "../data/products"
-import { SectionHeader } from "./Explore"
+import SectionHeader from "./SectionHeader"
 
 export default function Preview() {
   return (

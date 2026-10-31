@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { appProducts } from "../data/products"
-import { SectionHeader } from "./Explore"
+import SectionHeader from "./SectionHeader"
 
 export default function Apps() {
   return (
@@ -9,8 +9,8 @@ export default function Apps() {
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Apps"
-          title="Native apps for Apple platforms."
-          body="iPhone, iPad and Apple Watch apps built under Dashovia — each with its own screenshots, preview and privacy policy."
+          title="Apps for Apple platforms and the web."
+          body="iPhone, iPad, Mac, Apple Watch and web apps built under Dashovia — most of them live on the App Store today."
         />
 
         <div className="mt-14 space-y-10">
@@ -33,7 +33,7 @@ function AppCard({ app }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="neo-raised rounded-3xl p-6 text-left sm:p-8"
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+      <div className={`grid gap-8 lg:items-center ${app.video || app.poster ? "lg:grid-cols-[1fr_1.15fr]" : ""}`}>
         <div>
           <div className="flex items-center gap-4">
             <img
@@ -92,12 +92,25 @@ function AppCard({ app }) {
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             ) : null}
-            <a
-              href={app.privacyUrl}
-              className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
-            >
-              Privacy Policy
-            </a>
+            {app.webUrl ? (
+              <a
+                href={app.webUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="neo-accent inline-flex h-10 items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold"
+              >
+                Visit site
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            ) : null}
+            {app.privacyUrl ? (
+              <a
+                href={app.privacyUrl}
+                className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
+              >
+                Privacy Policy
+              </a>
+            ) : null}
             <a
               href={app.termsUrl}
               target="_blank"
@@ -115,6 +128,7 @@ function AppCard({ app }) {
           </div>
         </div>
 
+        {app.video ? (
         <div className="neo-inset overflow-hidden rounded-2xl p-2">
           <video
             src={app.video}
@@ -128,6 +142,16 @@ function AppCard({ app }) {
             className="aspect-video w-full rounded-xl bg-black object-cover"
           />
         </div>
+        ) : app.poster ? (
+          <div className="neo-inset overflow-hidden rounded-2xl p-2">
+            <img
+              src={app.poster}
+              alt={`${app.name} preview`}
+              loading="lazy"
+              className="aspect-video w-full rounded-xl object-cover"
+            />
+          </div>
+        ) : null}
       </div>
 
       <div className="-mx-6 mt-8 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8">

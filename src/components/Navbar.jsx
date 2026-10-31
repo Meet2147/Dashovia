@@ -4,7 +4,6 @@ import siteLogo from "../assets/brand/dashovia-logo-final-03.jpg"
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "APIs", href: "#apis" },
   { label: "Extensions", href: "#extensions" },
   { label: "Apps", href: "#apps" },
   { label: "Contact", href: "#contact" },
