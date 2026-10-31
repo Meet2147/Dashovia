@@ -1,23 +1,16 @@
-import { motion } from "framer-motion"
-
-export default function SectionHeader({ eyebrow, title, body }) {
+export default function SectionHeader({ number, eyebrow, title, accent, body, tone = "light" }) {
+  const soft = tone === "dark" ? "text-cream/70" : "text-ink-soft"
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="max-w-3xl"
-    >
-      <span className="neo-inset inline-block rounded-full px-4 py-2 text-xs font-medium tracking-[0.2em] text-[var(--ink-soft)] uppercase">
-        {eyebrow}
-      </span>
-      <h2 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-[var(--ink)] sm:text-4xl lg:text-5xl">
-        {title}
-      </h2>
-      <p className="mt-5 text-base leading-7 text-[var(--ink-soft)] sm:text-lg">
-        {body}
-      </p>
-    </motion.div>
+    <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
+      <div>
+        <p className={`kicker ${tone === "dark" ? "text-tomato" : "text-tomato"}`}>
+          {number} / {eyebrow}
+        </p>
+        <h2 className="mt-4 text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[0.95] tracking-[-0.045em]">
+          {title} {accent ? <span className="accent text-tomato-bright">{accent}</span> : null}
+        </h2>
+      </div>
+      {body ? <p className={`max-w-[44ch] text-lg leading-8 ${soft} lg:justify-self-end`}>{body}</p> : null}
+    </div>
   )
 }

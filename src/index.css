@@ -1,34 +1,24 @@
 @import "tailwindcss";
 
-/* ==========================================================================
-   DASHOVIA — Minimal Neumorphic Design System
-   A single calm surface, soft dual shadows, monochrome + one quiet accent.
-   ========================================================================== */
+/* Dashovia — Tomato and Denim.
+   Oat paper, denim ink, tomato for emphasis. Borders do the structure;
+   hard offset shadows are kept for things you can press. */
 
 @theme {
-  --color-surface: #e6eaf1;
-  --color-ink: #3a4256;
-  --color-ink-soft: #7b8598;
-  --color-accent: #0a8ff5;
-}
+  --color-oat: #f3ecdf;
+  --color-cream: #fbf7ef;
+  --color-ink: #1d2b4a;
+  --color-ink-soft: #4f5b75;
+  --color-ink-faint: #5f6981;
+  --color-tomato: #c8331f;
+  --color-tomato-bright: #e8432d;
+  --color-denim: #2e4a7d;
+  --color-denim-deep: #1d2b4a;
+  --color-line: #1d2b4a;
 
-:root {
-  /* Base surface everything sits on */
-  --surface: #e6eaf1;
-
-  /* Dual-shadow tones derived from the surface — kept soft/low-contrast
-     for a flat, minimal neumorphic feel. */
-  --shadow-dark: #ced4e0;
-  --shadow-light: #ffffff;
-
-  /* Text */
-  --ink: #3a4256;
-  --ink-soft: #7b8598;
-  --ink-faint: #9aa3b4;
-
-  /* One restrained accent — sampled from the Dashovia logo blue */
-  --accent: #0a8ff5;
-  --accent-soft: #6fbcfb;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 * {
@@ -37,76 +27,157 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
   margin: 0;
-  background: var(--surface);
-  color: var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  background: var(--color-oat);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ---- Neumorphic surfaces --------------------------------------------------
-   Raised = element sits above the surface (light top-left, dark bottom-right).
-   Pressed/inset = element carved into the surface.
-   -------------------------------------------------------------------------- */
-
-.neo-raised {
-  background: var(--surface);
-  box-shadow: 4px 4px 11px var(--shadow-dark), -4px -4px 11px var(--shadow-light);
-}
-
-.neo-raised-sm {
-  background: var(--surface);
-  box-shadow: 3px 3px 7px var(--shadow-dark), -3px -3px 7px var(--shadow-light);
-}
-
-.neo-inset {
-  background: var(--surface);
-  box-shadow: inset 3px 3px 7px var(--shadow-dark),
-    inset -3px -3px 7px var(--shadow-light);
-}
-
-/* Interactive: raised at rest, deepens gently on hover, presses in on active */
-.neo-interactive {
-  background: var(--surface);
-  box-shadow: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
-  transition: box-shadow 0.28s ease, transform 0.28s ease, color 0.2s ease;
-}
-.neo-interactive:hover {
-  box-shadow: 6px 6px 13px var(--shadow-dark), -6px -6px 13px var(--shadow-light);
-}
-.neo-interactive:active {
-  box-shadow: inset 3px 3px 7px var(--shadow-dark),
-    inset -3px -3px 7px var(--shadow-light);
-}
-
-/* Solid accent button (the single high-emphasis action style) */
-.neo-accent {
-  background: var(--accent);
-  color: #ffffff;
-  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
-  transition: box-shadow 0.28s ease, transform 0.28s ease;
-}
-.neo-accent:hover {
-  box-shadow: 6px 6px 13px var(--shadow-dark), -6px -6px 13px var(--shadow-light);
-  transform: translateY(-1px);
-}
-.neo-accent:active {
-  transform: translateY(0);
-  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.18),
-    inset -4px -4px 9px rgba(255, 255, 255, 0.12);
-}
-
-/* Small circular accent dot */
-.neo-dot {
-  box-shadow: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
-}
-
 ::selection {
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--color-tomato);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-tomato);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Small mono label used above headings and in meta rows */
+.kicker {
+  font: 500 12px/1.2 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Italic serif accent inside sans headlines */
+.accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Buttons: bordered pills with a hard shadow that presses in */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 20px;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+.btn-sm {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+.btn-tomato {
+  background: var(--color-tomato);
+  color: var(--color-cream);
+}
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  box-shadow: 3px 3px 0 var(--color-tomato);
+}
+.btn-ink:hover {
+  box-shadow: 4px 4px 0 var(--color-tomato);
+}
+.btn-ink:active {
+  box-shadow: 0 0 0 var(--color-tomato);
+}
+
+/* Filter chips */
+.chip {
+  height: 36px;
+  padding: 0 14px;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink);
+  font: 500 13px/1 var(--font-mono);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.chip:hover {
+  background: var(--color-cream);
+}
+.chip[aria-pressed="true"] {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+.chip .count {
+  margin-left: 6px;
+  opacity: 0.6;
+}
+
+/* App-name ticker */
+.ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 60s linear infinite;
+}
+.ticker-wrap:hover .ticker {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Screenshot strip: horizontal scroll that snaps */
+.strip {
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-faint) transparent;
+}
+.strip > * {
+  scroll-snap-align: start;
+}
+@media (min-width: 640px) {
+  .strip {
+    scroll-padding-inline: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ticker {
+    animation: none;
+  }
+  .btn,
+  .chip {
+    transition: none;
+  }
 }

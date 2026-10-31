@@ -182,7 +182,6 @@ export const appProducts = [
     video: "/apps/codestreak/preview.mp4",
     poster: "/apps/codestreak/poster.webp",
     screenshots: [
-      { src: "/apps/codestreak/screens/01-desktop.webp", alt: "CodeStreak home page on desktop" },
       { src: "/apps/codestreak/screens/02-mobile.webp", alt: "CodeStreak on a phone" },
     ],
     webUrl: "https://codestreak.dashovia.app/",
@@ -482,7 +481,6 @@ export const appProducts = [
     video: "/apps/tapri/preview.mp4",
     poster: "/apps/tapri/poster.webp",
     screenshots: [
-      { src: "/apps/tapri/screens/01-desktop.webp", alt: "Tapri website on desktop" },
       { src: "/apps/tapri/screens/02-mobile.webp", alt: "Tapri website on a phone" },
     ],
     webUrl: "https://tapri.dashovia.cafe/",
@@ -507,7 +505,6 @@ export const appProducts = [
     video: "/apps/stepwise/preview.mp4",
     poster: "/apps/stepwise/poster.webp",
     screenshots: [
-      { src: "/apps/stepwise/screens/01-desktop.webp", alt: "Stepwise website on desktop" },
       { src: "/apps/stepwise/screens/02-mobile.webp", alt: "Stepwise website on a phone" },
     ],
     webUrl: "https://stepwise.dashovia.app/",
@@ -532,7 +529,6 @@ export const appProducts = [
     video: "/apps/cadence/preview.mp4",
     poster: "/apps/cadence/poster.webp",
     screenshots: [
-      { src: "/apps/cadence/screens/01-desktop.webp", alt: "Cadence website on desktop" },
       { src: "/apps/cadence/screens/02-mobile.webp", alt: "Cadence website on a phone" },
     ],
     webUrl: "https://cadence.dashovia.app/",
@@ -557,7 +553,6 @@ export const appProducts = [
     video: "/apps/pickwise/preview.mp4",
     poster: "/apps/pickwise/poster.webp",
     screenshots: [
-      { src: "/apps/pickwise/screens/01-desktop.webp", alt: "Pickwise website on desktop" },
       { src: "/apps/pickwise/screens/02-mobile.webp", alt: "Pickwise website on a phone" },
     ],
     webUrl: "https://pickwise.dashovia.app/",
@@ -582,7 +577,6 @@ export const appProducts = [
     video: "/apps/cubby/preview.mp4",
     poster: "/apps/cubby/poster.webp",
     screenshots: [
-      { src: "/apps/cubby/screens/01-desktop.webp", alt: "Cubby website on desktop" },
       { src: "/apps/cubby/screens/02-mobile.webp", alt: "Cubby website on a phone" },
     ],
     webUrl: "https://cubby.dashovia.app/",
@@ -607,7 +601,6 @@ export const appProducts = [
     video: "/apps/codemate/preview.mp4",
     poster: "/apps/codemate/poster.webp",
     screenshots: [
-      { src: "/apps/codemate/screens/01-desktop.webp", alt: "CodeMate website on desktop" },
       { src: "/apps/codemate/screens/02-mobile.webp", alt: "CodeMate website on a phone" },
     ],
     webUrl: "https://codemate.dashovia.app/",
@@ -632,7 +625,6 @@ export const appProducts = [
     video: "/apps/cairn/preview.mp4",
     poster: "/apps/cairn/poster.webp",
     screenshots: [
-      { src: "/apps/cairn/screens/01-desktop.webp", alt: "Cairn website on desktop" },
       { src: "/apps/cairn/screens/02-mobile.webp", alt: "Cairn website on a phone" },
     ],
     webUrl: "https://cairn.dashovia.app/",
@@ -705,5 +697,16 @@ export const appProducts = [
 export const portfolioStats = {
   extensionCount: extensionProducts.length,
   appCount: appProducts.length,
+  appStoreCount: appProducts.filter((app) => app.appStoreUrl).length,
+  liveCount: appProducts.filter((app) => app.status.startsWith("On the App Store") || app.status.startsWith("Live")).length,
   totalCount: extensionProducts.length + appProducts.length,
 }
+
+// Filter groups for the Apps section. An app can sit in more than one.
+export const appFilters = [
+  { id: "all", label: "All", test: () => true },
+  { id: "ios", label: "App Store", test: (app) => Boolean(app.appStoreUrl) },
+  { id: "mac", label: "Mac", test: (app) => app.platforms.includes("Mac") },
+  { id: "web", label: "Web", test: (app) => app.platforms.includes("Web") },
+  { id: "soon", label: "Coming soon", test: (app) => app.status === "Coming soon" },
+]

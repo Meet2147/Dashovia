@@ -1,16 +1,18 @@
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
-import Preview from "./components/Preview"
 import Apps from "./components/Apps"
+import Preview from "./components/Preview"
 import Contact from "./components/Contact"
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[var(--surface)] text-[var(--ink)]">
+    <div className="min-h-screen overflow-x-clip">
       <Navbar />
-      <Hero />
-      <Preview />
-      <Apps />
+      <main>
+        <Hero />
+        <Apps />
+        <Preview />
+      </main>
       <Contact />
     </div>
   )

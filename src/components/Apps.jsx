@@ -1,21 +1,42 @@
-import { motion } from "framer-motion"
+import { useState } from "react"
 import { ArrowUpRight } from "lucide-react"
-import { appProducts } from "../data/products"
+import { appFilters, appProducts } from "../data/products"
 import SectionHeader from "./SectionHeader"
 
 export default function Apps() {
+  const [filterId, setFilterId] = useState("all")
+  const filter = appFilters.find((item) => item.id === filterId) ?? appFilters[0]
+  const visible = appProducts.filter(filter.test)
+
   return (
-    <section id="apps" className="relative px-5 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="apps" className="border-b-[1.5px] border-line">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionHeader
+          number="01"
           eyebrow="Apps"
-          title="Apps for Apple platforms and the web."
-          body="iPhone, iPad, Mac, Apple Watch and web apps built under Dashovia — on the App Store, on the web and as direct Mac downloads."
+          title="Things you can"
+          accent="use today."
+          body="Apps for iPhone, iPad, Mac, Apple Watch and the web. Tap one to see it in action, or jump straight to the store."
         />
 
-        <div className="mt-14 space-y-10">
-          {appProducts.map((app) => (
-            <AppCard key={app.slug} app={app} />
+        <div className="mt-12 flex flex-wrap gap-2.5" role="group" aria-label="Filter apps">
+          {appFilters.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="chip"
+              aria-pressed={item.id === filterId}
+              onClick={() => setFilterId(item.id)}
+            >
+              {item.label}
+              <span className="count">{appProducts.filter(item.test).length}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-10 space-y-8">
+          {visible.map((app, index) => (
+            <AppCard key={app.slug} app={app} number={appProducts.indexOf(app) + 1} flip={index % 2 === 1} />
           ))}
         </div>
       </div>
@@ -23,152 +44,151 @@ export default function Apps() {
   )
 }
 
-function AppCard({ app }) {
+function statusStyle(status) {
+  if (status === "Coming soon") return "border-line text-ink-soft"
+  if (status === "Beta" || status === "Pre-order") return "border-denim bg-denim text-cream"
+  return "border-tomato bg-tomato text-cream"
+}
+
+function AppCard({ app, number, flip }) {
+  const hasMedia = Boolean(app.video || app.poster)
+  // A single phone shot reads better tucked onto the preview than as a strip of one.
+  const phoneShot = hasMedia && app.screenshots?.length === 1 ? app.screenshots[0] : null
+  const strip = phoneShot ? [] : (app.screenshots ?? [])
+  const primary = app.appStoreUrl
+    ? { href: app.appStoreUrl, label: "App Store" }
+    : app.webUrl
+      ? { href: app.webUrl, label: "Visit site" }
+      : null
+
   return (
-    <motion.article
-      id={app.slug}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="neo-raised rounded-3xl p-6 text-left sm:p-8"
-    >
-      <div className={`grid gap-8 lg:items-center ${app.video || app.poster ? "lg:grid-cols-[1fr_1.15fr]" : ""}`}>
-        <div>
-          <div className="flex items-center gap-4">
+    <article id={app.slug} className="overflow-hidden rounded-[22px] border-[1.5px] border-line bg-cream">
+      <div className={`grid gap-8 p-6 sm:p-8 ${hasMedia ? "lg:grid-cols-2 lg:items-center" : ""}`}>
+        <div className={flip && hasMedia ? "lg:order-2" : ""}>
+          <div className="flex items-center gap-3">
+            <span className="kicker text-ink-faint">{String(number).padStart(2, "0")}</span>
+            <span className={`kicker rounded-full border-[1.5px] px-2.5 py-1 text-[11px] ${statusStyle(app.status)}`}>
+              {app.status}
+            </span>
+          </div>
+
+          <div className="mt-5 flex items-center gap-4">
             <img
               src={app.icon}
               alt=""
               width="64"
               height="64"
-              className="neo-raised-sm h-16 w-16 rounded-2xl"
+              className="h-16 w-16 shrink-0 rounded-[18px] border-[1.5px] border-line bg-oat object-cover"
             />
-            <div>
-              <h3 className="text-2xl font-semibold tracking-tight text-[var(--ink)]">
-                {app.name}
-              </h3>
-              <p className="mt-1 text-sm text-[var(--ink-soft)]">{app.tagline}</p>
+            <div className="min-w-0">
+              <h3 className="text-3xl font-extrabold leading-tight tracking-[-0.035em] sm:text-4xl">{app.name}</h3>
+              <p className="mt-1 text-[15px] text-ink-soft">{app.tagline}</p>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
-            <span className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.14em] text-[var(--ink-soft)] uppercase">
-              <span className="neo-dot h-2 w-2 rounded-full bg-[var(--accent)]" />
-              {app.status}
-            </span>
-            <span className="text-xs font-medium tracking-[0.12em] text-[var(--ink-faint)] uppercase">
-              {app.category}
-            </span>
-            <span className="text-xs font-medium tracking-[0.12em] text-[var(--ink-faint)] uppercase">
-              {app.platforms.join(" · ")}
-            </span>
-          </div>
+          <p className="mt-6 max-w-[54ch] text-base leading-7 text-ink-soft">{app.summary}</p>
 
-          <p className="mt-5 text-sm leading-6 text-[var(--ink-soft)] sm:text-base sm:leading-7">
-            {app.summary}
-          </p>
-
-          <ul className="mt-5 space-y-2.5">
+          <ul className="mt-5 space-y-2">
             {app.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="flex items-center gap-3 text-sm text-[var(--ink-soft)]"
-              >
-                <span className="neo-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--ink-faint)]" />
+              <li key={highlight} className="flex gap-3 text-[15px] leading-6">
+                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-tomato-bright" aria-hidden="true" />
                 {highlight}
               </li>
             ))}
           </ul>
 
-          <div className="mt-7 flex flex-wrap gap-3">
-            {app.appStoreUrl ? (
-              <a
-                href={app.appStoreUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="neo-accent inline-flex h-10 items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold"
-              >
-                App Store
-                <ArrowUpRight className="h-4 w-4" />
+          <p className="kicker mt-6 text-ink-faint">
+            {app.category} · {app.platforms.join(" · ")}
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            {primary ? (
+              <a href={primary.href} target="_blank" rel="noreferrer" className="btn btn-sm btn-ink">
+                {primary.label}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             ) : null}
-            {app.webUrl ? (
-              <a
-                href={app.webUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="neo-accent inline-flex h-10 items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold"
-              >
-                Visit site
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            ) : null}
-            {app.privacyUrl ? (
-              <a
-                href={app.privacyUrl}
-                className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
-              >
-                Privacy Policy
-              </a>
-            ) : null}
-            {app.termsUrl ? (
-              <a
-                href={app.termsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
-              >
-                Terms of Use
-              </a>
-            ) : null}
-            <a
-              href={app.supportUrl ?? `mailto:${app.supportEmail}`}
-              className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
-            >
-              Support
-            </a>
+            <SmallLinks app={app} />
           </div>
         </div>
 
-        {app.video ? (
-        <div className="neo-inset overflow-hidden rounded-2xl p-2">
-          <video
-            src={app.video}
-            poster={app.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={`${app.name} preview`}
-            className="aspect-video w-full rounded-xl bg-black object-cover"
-          />
-        </div>
-        ) : app.poster ? (
-          <div className="neo-inset overflow-hidden rounded-2xl p-2">
-            <img
-              src={app.poster}
-              alt={`${app.name} preview`}
-              loading="lazy"
-              className="aspect-video w-full rounded-xl object-cover"
-            />
+        {hasMedia ? (
+          <div className={flip ? "lg:order-1" : ""}>
+            <div className={`relative ${phoneShot ? "pb-8 pr-6 sm:pr-10" : ""}`}>
+              <div className="overflow-hidden rounded-2xl border-[1.5px] border-line bg-ink">
+                {app.video ? (
+                  <video
+                    src={app.video}
+                    poster={app.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${app.name} preview`}
+                    className="aspect-video w-full object-cover"
+                  />
+                ) : (
+                  <img
+                    src={app.poster}
+                    alt={`${app.name} preview`}
+                    loading="lazy"
+                    className="aspect-video w-full object-cover object-top"
+                  />
+                )}
+              </div>
+              {phoneShot ? (
+                <img
+                  src={phoneShot.src}
+                  alt={phoneShot.alt}
+                  loading="lazy"
+                  className="absolute bottom-0 right-0 aspect-[390/844] w-[24%] rounded-[14px] border-[1.5px] border-line bg-cream object-cover object-top shadow-[4px_4px_0_var(--color-ink)]"
+                />
+              ) : null}
+            </div>
           </div>
         ) : null}
       </div>
 
-      <div className="-mx-6 mt-8 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8">
-        <div className="flex w-max gap-4">
-          {app.screenshots.map((shot) => (
-            <img
-              key={shot.src}
-              src={shot.src}
-              alt={shot.alt}
-              loading="lazy"
-              className="neo-raised-sm h-80 w-auto rounded-2xl sm:h-96"
-            />
-          ))}
+      {strip.length ? (
+        <div className="strip overflow-x-auto border-t-[1.5px] border-line bg-oat px-6 py-6 sm:px-8">
+          <div className="flex w-max gap-4">
+            {strip.map((shot) => (
+              <img
+                key={shot.src}
+                src={shot.src}
+                alt={shot.alt}
+                loading="lazy"
+                className="h-72 w-auto rounded-xl border-[1.5px] border-line bg-cream sm:h-80"
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </motion.article>
+      ) : null}
+    </article>
+  )
+}
+
+function SmallLinks({ app }) {
+  const links = [
+    app.privacyUrl ? { href: app.privacyUrl, label: "Privacy" } : null,
+    app.termsUrl ? { href: app.termsUrl, label: "Terms", external: true } : null,
+    { href: app.supportUrl ?? `mailto:${app.supportEmail}`, label: "Support" },
+  ].filter(Boolean)
+
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-1 pl-1">
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noreferrer" : undefined}
+          className="text-sm font-medium text-ink-soft underline decoration-ink/30 underline-offset-4 hover:text-ink hover:decoration-tomato"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
   )
 }

@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
-import siteLogo from "../assets/brand/dashovia-logo-final-03.jpg"
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Extensions", href: "#extensions" },
   { label: "Apps", href: "#apps" },
+  { label: "Extensions", href: "#extensions" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -13,88 +11,59 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <>
-      {/* DESKTOP */}
-      <nav className="hidden lg:block fixed top-6 left-1/2 z-50 -translate-x-1/2">
-        <div className="neo-raised flex items-center gap-10 rounded-full px-8 py-3">
-          <div className="flex items-center gap-3">
-            <BrandMark />
-            <span className="text-sm font-semibold tracking-tight text-[var(--ink)]">
-              Dashovia
-            </span>
-          </div>
+    <header className="sticky top-0 z-50 border-b-[1.5px] border-line bg-oat/90 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
+        <Wordmark />
 
-          <div className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <NavItem key={item.label} label={item.label} href={item.href} />
-            ))}
-          </div>
-        </div>
-      </nav>
+        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+          {navItems.slice(0, 2).map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-[15px] font-medium text-ink-soft transition-colors hover:text-ink"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a href="#contact" className="btn btn-sm btn-tomato">
+            Get in touch
+          </a>
+        </nav>
 
-      {/* MOBILE */}
-      <nav className="lg:hidden fixed top-4 left-4 right-4 z-50">
-        <div className="neo-raised flex items-center justify-between rounded-2xl px-5 py-3">
-          <div className="flex items-center gap-3">
-            <BrandMark />
-            <span className="text-sm font-semibold tracking-tight text-[var(--ink)]">
-              Dashovia
-            </span>
-          </div>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-line md:hidden"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="neo-interactive flex h-10 w-10 items-center justify-center rounded-xl"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X className="h-5 w-5 text-[var(--ink)]" />
-            ) : (
-              <Menu className="h-5 w-5 text-[var(--ink)]" />
-            )}
-          </button>
-        </div>
-
-        {isOpen && (
-          <div className="neo-raised mt-3 rounded-2xl p-3">
-            <div className="flex flex-col gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-black/[0.03] hover:text-[var(--ink)]"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-    </>
+      {isOpen ? (
+        <nav aria-label="Main" className="border-t-[1.5px] border-line px-5 py-3 md:hidden">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="block border-b border-line/15 py-3 text-lg font-semibold last:border-0"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      ) : null}
+    </header>
   )
 }
 
-function NavItem({ label, href }) {
+export function Wordmark() {
   return (
-    <a
-      href={href}
-      className="text-sm font-medium text-[var(--ink-soft)] transition-colors duration-200 hover:text-[var(--accent)]"
-    >
-      {label}
+    <a href="#top" className="flex items-baseline text-[22px] font-extrabold tracking-[-0.04em] text-ink">
+      dashovia
+      <span className="ml-0.5 inline-block h-2 w-2 rounded-full bg-tomato-bright" aria-hidden="true" />
     </a>
-  )
-}
-
-function BrandMark() {
-  return (
-    <div className="neo-raised-sm relative h-9 w-9 overflow-hidden rounded-xl bg-white">
-      <img
-        src={siteLogo}
-        alt="Dashovia logo"
-        className="absolute left-1/2 top-1/2 h-[205%] w-[205%] max-w-none -translate-x-1/2 -translate-y-[37%] object-cover"
-      />
-    </div>
   )
 }

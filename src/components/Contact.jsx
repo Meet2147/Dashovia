@@ -1,72 +1,48 @@
-import { motion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
+import { Wordmark } from "./Navbar"
 
-const contactLinks = [
-  {
-    label: "Email",
-    value: "meetjethwa2147@gmail.com",
-    href: "mailto:meetjethwa2147@gmail.com?subject=Dashovia%20Product%20Inquiry",
-  },
-  {
-    label: "Focus",
-    value: "Deploy, demo, or white-label",
-    href: "#extensions",
-  },
-]
+const EMAIL = "meetjethwa2147@gmail.com"
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative px-5 py-28 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="neo-raised mx-auto max-w-4xl rounded-[2rem] p-8 text-center sm:p-14"
-      >
-        <span className="neo-inset inline-block rounded-full px-4 py-2 text-xs font-medium tracking-[0.2em] text-[var(--ink-soft)] uppercase">
-          Contact
-        </span>
-        <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
-          Want one of these products live under its own offer?
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--ink-soft)] sm:text-lg">
-          We can package individual extensions, app launches, private demos, or
-          branded deployments — sell one product, bundle several, or spin up a
-          dedicated landing flow.
-        </p>
+    <>
+      <section id="contact" className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="rounded-[28px] border-[1.5px] border-line bg-tomato p-8 text-cream shadow-[6px_6px_0_var(--color-ink)] sm:p-12 lg:p-16">
+          <p className="kicker">03 / Contact</p>
+          <h2 className="mt-5 max-w-[14ch] text-[clamp(2.6rem,7vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.05em]">
+            Want one of these <span className="accent">under your name?</span>
+          </h2>
+          <p className="mt-6 max-w-[48ch] text-lg leading-8 text-cream/90">
+            Any app or extension here can be packaged on its own, demoed privately or built as a branded version for
+            your business. Tell us what you need.
+          </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a
-            href="mailto:meetjethwa2147@gmail.com?subject=Dashovia%20Product%20Inquiry"
-            className="neo-accent inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold"
-          >
-            Email Dashovia
-          </a>
-        </div>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {contactLinks.map((linkItem) => (
-            <a
-              key={linkItem.label}
-              href={linkItem.href}
-              target={linkItem.href.startsWith("http") ? "_blank" : undefined}
-              rel={linkItem.href.startsWith("http") ? "noreferrer" : undefined}
-              className="neo-interactive rounded-2xl px-5 py-6 text-left"
-            >
-              <p className="text-xs font-medium tracking-[0.16em] text-[var(--ink-faint)] uppercase">
-                {linkItem.label}
-              </p>
-              <p className="mt-2 text-base font-medium text-[var(--ink)]">
-                {linkItem.value}
-              </p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href={`mailto:${EMAIL}?subject=Dashovia%20inquiry`} className="btn btn-ink">
+              Email Dashovia
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
-          ))}
+            <a
+              href={`mailto:${EMAIL}?subject=Dashovia%20inquiry`}
+              className="font-mono text-sm break-all underline decoration-cream/50 underline-offset-4 hover:decoration-cream"
+            >
+              {EMAIL}
+            </a>
+          </div>
         </div>
-      </motion.div>
+      </section>
 
-      <p className="mt-14 text-center text-xs tracking-[0.12em] text-[var(--ink-faint)] uppercase">
-        © Dashovia — Product Studio
-      </p>
-    </section>
+      <footer className="border-t-[1.5px] border-line">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <Wordmark />
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-ink-soft">
+            <a href="#apps" className="hover:text-ink">Apps</a>
+            <a href="#extensions" className="hover:text-ink">Extensions</a>
+            <a href="#contact" className="hover:text-ink">Contact</a>
+          </nav>
+          <p className="kicker text-ink-faint">© 2026 Dashovia Innovations</p>
+        </div>
+      </footer>
+    </>
   )
 }
