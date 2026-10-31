@@ -61,9 +61,8 @@ export default function Navbar() {
 
 export function Wordmark() {
   return (
-    <a href="#top" className="flex items-baseline text-[22px] font-extrabold tracking-[-0.04em] text-ink">
-      dashovia
-      <span className="ml-0.5 inline-block h-2 w-2 rounded-full bg-tomato-bright" aria-hidden="true" />
+    <a href="#top" className="flex items-center" aria-label="Dashovia home">
+      <img src="/brand/dashovia-lockup.svg" alt="Dashovia" width="150" height="57" className="h-11 w-auto" />
     </a>
   )
 }
