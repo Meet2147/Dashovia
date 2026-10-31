@@ -7,11 +7,6 @@ const contactLinks = [
     href: "mailto:meetjethwa2147@gmail.com?subject=Dashovia%20Product%20Inquiry",
   },
   {
-    label: "GitHub",
-    value: "Meet2147",
-    href: "https://github.com/Meet2147",
-  },
-  {
     label: "Focus",
     value: "Deploy, demo, or white-label",
     href: "#extensions",
@@ -47,17 +42,9 @@ export default function Contact() {
           >
             Email Dashovia
           </a>
-          <a
-            href="https://github.com/Meet2147/Dashovia.git"
-            target="_blank"
-            rel="noreferrer"
-            className="neo-interactive inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold text-[var(--ink)]"
-          >
-            View Repo
-          </a>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {contactLinks.map((linkItem) => (
             <a
               key={linkItem.label}
