@@ -186,7 +186,7 @@ export const appProducts = [
     ],
     webUrl: "https://codestreak.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "crumbs",
@@ -216,7 +216,7 @@ export const appProducts = [
     appStoreUrl: "https://apps.apple.com/app/crumbs-lock-in-focus/id6824302613",
     privacyUrl: "/apps/crumbs/privacy/",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "flex",
@@ -243,7 +243,7 @@ export const appProducts = [
     webUrl: "https://letsflex.app/",
     appStoreUrl: null,
     termsUrl: "https://letsflex.app/terms",
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "ainsights",
@@ -270,7 +270,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/ainsights/id6741358886",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "krishna-sada-sahayate",
@@ -297,7 +297,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/krishna-sada-sahayate/id6755926493",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "smaaran",
@@ -324,7 +324,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/smaaran/id6755649258",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "brahma-muhurat",
@@ -354,7 +354,7 @@ export const appProducts = [
     appStoreUrl: "https://apps.apple.com/app/brahma-muhurat/id6743993366",
     privacyUrl: "/apps/brahma-muhurat/privacy/",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meet@thelabs.co.in",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "inner-krishna",
@@ -378,7 +378,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/inner-krishna/id6744820678",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "audiolift",
@@ -408,7 +408,7 @@ export const appProducts = [
     appStoreUrl: "https://apps.apple.com/app/audiolift/id6736903957",
     privacyUrl: "/apps/audiolift/privacy/",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meet@thelabs.co.in",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "snipvideo",
@@ -437,7 +437,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/snipvideo/id6737333833",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "certiphy",
@@ -461,7 +461,7 @@ export const appProducts = [
     ],
     appStoreUrl: "https://apps.apple.com/app/certiphy/id6757355664",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "tapri",
@@ -485,7 +485,7 @@ export const appProducts = [
     ],
     webUrl: "https://tapri.dashovia.cafe/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "stepwise",
@@ -509,7 +509,7 @@ export const appProducts = [
     ],
     webUrl: "https://stepwise.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "cadence",
@@ -533,7 +533,7 @@ export const appProducts = [
     ],
     webUrl: "https://cadence.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "pickwise",
@@ -557,7 +557,7 @@ export const appProducts = [
     ],
     webUrl: "https://pickwise.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "cubby",
@@ -581,7 +581,7 @@ export const appProducts = [
     ],
     webUrl: "https://cubby.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "codemate",
@@ -605,7 +605,7 @@ export const appProducts = [
     ],
     webUrl: "https://codemate.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "cairn",
@@ -629,7 +629,7 @@ export const appProducts = [
     ],
     webUrl: "https://cairn.dashovia.app/",
     appStoreUrl: null,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "sapience",
@@ -660,7 +660,7 @@ export const appProducts = [
     privacyUrl: "/apps/sapience/privacy/",
     supportUrl: "/apps/sapience/support/",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
   {
     slug: "cartlater",
@@ -690,7 +690,7 @@ export const appProducts = [
     privacyUrl: "/apps/cartlater/privacy/",
     supportUrl: "/apps/cartlater/support/",
     termsUrl: TERMS_OF_USE_URL,
-    supportEmail: "meetjethwa3@gmail.com",
+    supportEmail: "contact@dashovia.app",
   },
 ]
 
