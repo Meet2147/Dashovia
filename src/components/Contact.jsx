@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
 import { Wordmark } from "./Navbar"
 
-const EMAIL = "meetjethwa2147@gmail.com"
+const EMAIL = "contact@dashovia.app"
 
 export default function Contact() {
   return (
