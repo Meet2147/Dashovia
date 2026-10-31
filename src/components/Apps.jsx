@@ -10,7 +10,7 @@ export default function Apps() {
         <SectionHeader
           eyebrow="Apps"
           title="Apps for Apple platforms and the web."
-          body="iPhone, iPad, Mac, Apple Watch and web apps built under Dashovia — most of them live on the App Store today."
+          body="iPhone, iPad, Mac, Apple Watch and web apps built under Dashovia — on the App Store, on the web and as direct Mac downloads."
         />
 
         <div className="mt-14 space-y-10">
@@ -111,14 +111,16 @@ function AppCard({ app }) {
                 Privacy Policy
               </a>
             ) : null}
-            <a
-              href={app.termsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
-            >
-              Terms of Use
-            </a>
+            {app.termsUrl ? (
+              <a
+                href={app.termsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
+              >
+                Terms of Use
+              </a>
+            ) : null}
             <a
               href={app.supportUrl ?? `mailto:${app.supportEmail}`}
               className="neo-interactive inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-[var(--ink)]"
