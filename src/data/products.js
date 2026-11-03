@@ -692,6 +692,34 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "contact@dashovia.app",
   },
+  {
+    slug: "fitcheck",
+    name: "Fitcheck: Outfit Planner",
+    tagline: "Tomorrow's outfit, decided.",
+    category: "Lifestyle",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "Snap your clothes once and Fitcheck plans what to wear from what you own. Add a presentation, a date, a wedding or the gym and the outfit changes to match. Tomorrow's fit arrives as a notification the night before.",
+    highlights: [
+      "Outfits that match the day: pitch, date, wedding or gym",
+      "Import what you buy online by sharing a product link or an order screenshot",
+      "No account; photos and plans stay on your iPhone, with an optional Face ID lock",
+    ],
+    icon: "/apps/fitcheck/icon.png",
+    screenshots: [
+      { src: "/apps/fitcheck/screens/01-fit.webp", alt: "Tomorrow's fit for a client pitch: white shirt, black trousers, navy blazer, pumps and gold hoops" },
+      { src: "/apps/fitcheck/screens/02-wedding.webp", alt: "A formal outfit for Saturday's wedding" },
+      { src: "/apps/fitcheck/screens/03-plan.webp", alt: "The plan calendar with tomorrow's client pitch" },
+      { src: "/apps/fitcheck/screens/04-closet.webp", alt: "The closet grid with photos of each piece" },
+      { src: "/apps/fitcheck/screens/05-import.webp", alt: "Pieces imported from an order screenshot" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/fitcheck/privacy/",
+    supportUrl: "/apps/fitcheck/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "contact@dashovia.app",
+  },
 ]
 
 export const portfolioStats = {
