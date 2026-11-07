@@ -720,6 +720,28 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "contact@dashovia.app",
   },
+  {
+    slug: "spill",
+    name: "Spill: Skincare Scanner",
+    tagline: "Is your skincare sus?",
+    category: "Lifestyle",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "Scan a barcode or snap the ingredient label and Spill tells you what's actually in it, scored for your skin. Add your routine and it calls out products that fight each other, like retinol and acids on the same night.",
+    highlights: [
+      "Works on any bottle: the label photo is read on your iPhone",
+      "Routine clash check for retinol, acids, benzoyl peroxide and missing SPF",
+      "Scores change for sensitive, breakout-prone, dry or pregnant skin",
+    ],
+    icon: "/apps/spill/icon.png",
+    video: "/apps/spill/preview.mp4",
+    poster: "/apps/spill/poster.webp",
+    waitlistUrl: "/apps/spill/",
+    appStoreUrl: null,
+    privacyUrl: "/apps/spill/privacy/",
+    supportEmail: "contact@dashovia.app",
+  },
 ]
 
 export const portfolioStats = {

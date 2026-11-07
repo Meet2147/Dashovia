@@ -56,10 +56,12 @@ function AppCard({ app, number, flip }) {
   const phoneShot = hasMedia && app.screenshots?.length === 1 ? app.screenshots[0] : null
   const strip = phoneShot ? [] : (app.screenshots ?? [])
   const primary = app.appStoreUrl
-    ? { href: app.appStoreUrl, label: "App Store" }
-    : app.webUrl
-      ? { href: app.webUrl, label: "Visit site" }
-      : null
+    ? { href: app.appStoreUrl, label: "App Store", external: true }
+    : app.waitlistUrl
+      ? { href: app.waitlistUrl, label: "Join the waitlist" }
+      : app.webUrl
+        ? { href: app.webUrl, label: "Visit site", external: true }
+        : null
 
   return (
     <article id={app.slug} className="overflow-hidden rounded-[22px] border-[1.5px] border-line bg-cream">
@@ -103,7 +105,12 @@ function AppCard({ app, number, flip }) {
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             {primary ? (
-              <a href={primary.href} target="_blank" rel="noreferrer" className="btn btn-sm btn-ink">
+              <a
+                href={primary.href}
+                target={primary.external ? "_blank" : undefined}
+                rel={primary.external ? "noreferrer" : undefined}
+                className="btn btn-sm btn-ink"
+              >
                 {primary.label}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
