@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawr — Valet storage for your extra stuff · Dashovia</title>
+<meta name="description" content="Drawr is valet storage for your extra stuff. We pick up your boxes, photograph every item, store it safely and deliver anything back next day. Track it all in the app. From ₹299/box a month.">
+<link rel="icon" type="image/png" href="/apps/drawr/icon.png">
+<link rel="apple-touch-icon" href="/apps/drawr/icon.png">
+<meta property="og:title" content="Drawr — Your flat is not a godown.">
+<meta property="og:description" content="We pick up your boxes, photograph every item, store it safely and deliver anything back next day. From ₹299/box a month.">
+<meta property="og:image" content="https://www.dashovia.com/apps/drawr/poster.webp">
+<meta property="og:url" content="https://www.dashovia.com/apps/drawr/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f9fc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --snow:#f7f9fc; --card:#ffffff; --ink:#14213d; --muted:#5b6782; --line:#dbe3ee;
+    --glacier:#4a90c2; --glacier-ink:#2a6c9e; --glacier-soft:#e5f0f8;
+    --parka:#d93d32; --parka-soft:#fce8e6; --sun:#ffd84d; --ok:#1e7d55; --ok-soft:#e1f3ea;
+    --display:"Bricolage Grotesque", system-ui, sans-serif; --body:"Figtree", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; overflow-x:clip; background:var(--snow); color:var(--ink); font:17px/1.6 var(--body); -webkit-font-smoothing:antialiased; }
+  a { color:var(--glacier-ink); }
+  img { max-width:100%; height:auto; display:block; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  h1, h2, h3 { font-family:var(--display); line-height:1.02; letter-spacing:-0.03em; margin:0; }
+  h1 { font-size:clamp(46px, 8vw, 92px); font-weight:800; }
+  h2 { font-size:clamp(32px, 5vw, 52px); font-weight:800; }
+  h3 { font-size:22px; font-weight:800; letter-spacing:-0.01em; }
+  p { margin:0; }
+  .kicker { font:600 12px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--glacier-ink); }
+  .lede { font-size:clamp(18px, 2vw, 21px); color:var(--muted); max-width:34em; }
+  .muted { color:var(--muted); }
+  section { padding:80px 0; }
+  .red { color:var(--parka); }
+
+  /* nav */
+  .nav { position:sticky; top:0; z-index:10; background:rgba(247,249,252,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:2px solid var(--ink); }
+  .nav .wrap { display:flex; align-items:center; gap:14px; height:64px; }
+  .brand { display:flex; align-items:center; gap:10px; font:800 22px var(--display); text-decoration:none; color:var(--ink); letter-spacing:-.02em; }
+  .brand img { width:36px; height:36px; border-radius:9px; border:2px solid var(--ink); }
+  .back { font-size:14px; color:var(--muted); text-decoration:none; margin-left:auto; }
+  .back:hover { color:var(--ink); }
+  @media (max-width:520px) { .back .long { display:none; } .nav .btn.sm { padding:7px 11px; font-size:13px; } }
+
+  /* buttons: chunky outline + hard shadow */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:2px solid var(--ink); border-radius:999px; background:var(--parka); color:#fff; font:700 16px var(--body); padding:13px 22px; text-decoration:none; white-space:nowrap; box-shadow:3px 3px 0 var(--ink); transition:transform .12s, box-shadow .12s; }
+  .btn:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--ink); }
+  .btn:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+  .btn.ghost { background:var(--card); color:var(--ink); }
+  .btn.sm { padding:8px 14px; font-size:14px; box-shadow:2px 2px 0 var(--ink); }
+  .btn:focus-visible { outline:3px solid var(--glacier); outline-offset:3px; }
+
+  /* hero */
+  .hero { padding:56px 0 36px; }
+  .hero .wrap { display:grid; gap:44px; align-items:center; }
+  @media (min-width:920px) { .hero .wrap { grid-template-columns:1.1fr .9fr; } }
+  .pill { display:inline-flex; gap:8px; align-items:center; background:var(--card); border:2px solid var(--ink); border-radius:999px; padding:5px 12px; font:600 13px var(--mono); }
+  .pill i { width:9px; height:9px; border-radius:50%; background:var(--ok); }
+  .hero h1 { margin:20px 0 20px; }
+  .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+  .soon { margin-top:14px; font-size:14px; color:var(--muted); }
+  .phones { position:relative; height:560px; }
+  .phones img { position:absolute; width:250px; border:3px solid var(--ink); border-radius:34px; box-shadow:8px 8px 0 var(--ink); background:#fff; }
+  .phones .a { left:0; top:40px; transform:rotate(-5deg); }
+  .phones .b { right:0; top:0; transform:rotate(4deg); }
+  .sticker { position:absolute; z-index:2; background:var(--sun); border:2px solid var(--ink); border-radius:12px; padding:8px 12px; font:800 14px var(--display); text-transform:uppercase; box-shadow:3px 3px 0 var(--ink); transform:rotate(-7deg); }
+  @media (max-width:560px) { .phones { height:440px; } .phones img { width:190px; } }
+
+  .ticker { background:var(--parka); color:#fff; border-block:2px solid var(--ink); transform:rotate(-1.5deg); margin:24px -12px; padding:12px 0; overflow:hidden; white-space:nowrap; font:800 18px var(--display); text-transform:uppercase; letter-spacing:.02em; }
+
+  /* steps */
+  .grid { display:grid; gap:16px; margin-top:36px; }
+  @media (min-width:720px) { .grid.two { grid-template-columns:repeat(2,1fr); } .grid.four { grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1020px) { .grid.four { grid-template-columns:repeat(4,1fr); } .grid.three { grid-template-columns:repeat(3,1fr); } }
+  .card { background:var(--card); border:2px solid var(--ink); border-radius:20px; padding:24px; box-shadow:4px 4px 0 var(--ink); }
+  .card .n { font:700 13px var(--mono); color:var(--parka); }
+  .card h3 { margin:10px 0 8px; }
+  .card p { color:var(--muted); }
+
+  /* feature rows */
+  .feature { display:grid; gap:36px; align-items:center; margin-top:56px; }
+  @media (min-width:900px) { .feature { grid-template-columns:1fr 1fr; } .feature.flip > :first-child { order:2; } }
+  .feature img { width:min(320px, 80vw); margin:0 auto; border:3px solid var(--ink); border-radius:34px; box-shadow:8px 8px 0 var(--ink); }
+  .feature ul { padding-left:20px; margin:16px 0 0; } .feature li { margin:6px 0; }
+
+  /* pricing */
+  .price { display:grid; gap:20px; margin-top:32px; }
+  @media (min-width:900px) { .price { grid-template-columns:1fr 1fr; } }
+  .price table { width:100%; border-collapse:collapse; }
+  .price td { padding:12px 0; border-bottom:1.5px dashed var(--line); vertical-align:top; }
+  .price td:last-child { text-align:right; font:600 15px var(--mono); }
+  .big { font:800 64px var(--display); letter-spacing:-.04em; line-height:1; }
+  .tag { display:inline-block; font:600 12px var(--mono); padding:3px 8px; border-radius:6px; background:var(--ok-soft); color:var(--ok); border:1.5px solid var(--ok); }
+  .tag.red { background:var(--parka-soft); color:var(--parka); border-color:var(--parka); }
+
+  /* safety */
+  .band { background:var(--ink); color:var(--snow); }
+  .band .kicker { color:#8cc3ec; }
+  .band .card { background:#1b2a4a; border-color:#8cc3ec; box-shadow:4px 4px 0 #8cc3ec; }
+  .band .card p { color:#c7d3e8; }
+  .band a { color:#8cc3ec; }
+  .no { margin-top:20px; display:flex; flex-wrap:wrap; gap:8px; }
+  .no span { font:600 13px var(--mono); border:1.5px solid #ff9a8f; color:#ffb4ab; border-radius:999px; padding:5px 10px; }
+
+  /* faq */
+  details { background:var(--card); border:2px solid var(--ink); border-radius:16px; padding:16px 20px; margin-top:12px; }
+  summary { font-weight:700; cursor:pointer; }
+  details p { margin-top:10px; color:var(--muted); }
+
+  footer { border-top:2px solid var(--ink); padding:28px 0 48px; font-size:14px; color:var(--muted); }
+  footer .wrap { display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+  footer nav { display:flex; gap:16px; flex-wrap:wrap; margin-left:auto; }
+  @media (prefers-reduced-motion:reduce) { .btn { transition:none; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/apps/drawr/"><img src="/apps/drawr/icon.png" alt="">Drawr</a>
+    <a class="back" href="/#apps">← <span class="long">All Dashovia </span>apps</a>
+    <a class="btn sm" href="https://drawr.dashovia.app/#book">Book a pickup</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><i aria-hidden="true"></i>Live in Bengaluru · Mumbai</span>
+      <h1>Your flat is not a <span class="red">godown.</span></h1>
+      <p class="lede">Drawr is valet storage for your extra stuff. We pick up your boxes, photograph every item, store it safely and deliver anything back next day. Track it all in the app.</p>
+      <div class="cta">
+        <a class="btn" href="https://drawr.dashovia.app/#book">Book a free pickup</a>
+        <a class="btn ghost" href="#pricing">See pricing</a>
+      </div>
+      <p class="soon">From ₹299 a box a month · iPhone and Android apps coming soon. Until then, everything works on the web.</p>
+    </div>
+    <div class="phones" aria-label="Drawr app screenshots">
+      <span class="sticker" style="left:38%;top:6px">next-day delivery ✦</span>
+      <img class="a" src="/apps/drawr/screens/02-mystuff.webp" alt="My stuff: a photo grid of every stored item, like a blue puffer and a maroon sweater" loading="eager">
+      <img class="b" src="/apps/drawr/screens/03-orders.webp" alt="A delivery on its way with the rider on a live map and a 4-digit delivery code" loading="eager">
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">the jacket you wore twice ✦ manali puffer ✦ trek boots ✦ your ex's hoodie ✦ mom's extra razai ✦ the jacket you wore twice ✦ manali puffer</div>
+
+<section id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>Four taps. Zero lifting.</h2>
+    <div class="grid four">
+      <div class="card"><span class="n">01</span><h3>Book a pickup</h3><p>Five quick screens: who you are, where, what you're storing, and when. Takes about a minute.</p></div>
+      <div class="card"><span class="n">02</span><h3>We pack it</h3><p>Our runner brings boxes, tape and seals, packs with you, and labels every box with a code.</p></div>
+      <div class="card"><span class="n">03</span><h3>Every item, photographed</h3><p>Within 48 hours, each piece shows up in your app with a photo. Search it like your own closet.</p></div>
+      <div class="card"><span class="n">04</span><h3>Summon it back</h3><p>Tap a jacket or a whole box and pick a slot. It's at your door the next day. Follow the rider live.</p></div>
+    </div>
+
+    <div class="feature">
+      <img src="/apps/drawr/screens/05-stuff.webp" alt="Onboarding step: pick what you're storing, like jackets and woollens, and roughly how many boxes" loading="lazy">
+      <div>
+        <p class="kicker">Onboarding</p>
+        <h2>Sign up in five screens.</h2>
+        <p class="lede" style="margin-top:14px">Name and number, pickup address, what's taking over your room, a pickup slot, then a review with the full price before you book. No passwords: you get a private link, and the app remembers you.</p>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <img src="/apps/drawr/screens/03-orders.webp" alt="Live order tracking with progress steps, a delivery code and the rider on a map" loading="lazy">
+      <div>
+        <p class="kicker">Live tracking</p>
+        <h2>Watch your stuff come home.</h2>
+        <ul>
+          <li>Every order moves from Requested → Confirmed → On the way → Done</li>
+          <li>See the rider on a live map while your delivery is on the way</li>
+          <li>A 4-digit delivery code makes sure it reaches you, and only you</li>
+          <li>Slots fill up, so you'll never get a promise we can't keep</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:20px">
+  <div class="wrap">
+    <p class="kicker">Pricing</p>
+    <h2>Less than one late-night Zomato order.</h2>
+    <div class="price">
+      <div class="card">
+        <p class="muted">Storage</p>
+        <p class="big">₹299<span style="font-size:22px;color:var(--muted)">/box/month</span></p>
+        <p style="margin-top:10px">or <b>₹849 a box per quarter</b> <span class="tag">save ₹48</span></p>
+        <p class="muted" style="margin-top:12px">Box size 60 × 40 × 40 cm, up to 20 kg. Prices include GST. Minimum 3 months.</p>
+      </div>
+      <div class="card">
+        <table>
+          <tr><td>Pack + photo (one time)</td><td>₹149/box <span class="tag red">free for our first 50</span></td></tr>
+          <tr><td>Pickup</td><td>Free from 3 boxes near us · else ₹299</td></tr>
+          <tr><td>Deliver single items</td><td>₹99</td></tr>
+          <tr><td>Deliver 1–2 boxes</td><td>₹199</td></tr>
+          <tr><td>Deliver 3+ boxes</td><td>₹349</td></tr>
+          <tr><td>Cover</td><td>Up to ₹5,000/box included</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="safety">
+  <div class="wrap">
+    <p class="kicker">Is my stuff safe? fr?</p>
+    <h2>We guard your drip like it's ours.</h2>
+    <div class="grid three">
+      <div class="card"><h3>Inspected and photographed</h3><p>Every item is opened, checked and photographed when we pack it. You agree to this when you sign up. It keeps everyone's things safe, and you get a photo record of everything we hold.</p></div>
+      <div class="card"><h3>Sealed, coded, tracked</h3><p>Each box gets a tamper seal and a code like DR-0012, scanned in and out of a locked, CCTV-watched storeroom. Nothing sits on the floor, and pest control is regular.</p></div>
+      <div class="card"><h3>Private by design</h3><p>No ads, no selling data. Couriers only see your first name, number and drop address. Rider location is shown only during your delivery, then deleted.</p></div>
+    </div>
+    <p style="margin-top:28px">Never store:</p>
+    <div class="no" aria-label="Prohibited items">
+      <span>drugs &amp; illegal items</span><span>weapons</span><span>anything flammable</span><span>food &amp; plants</span><span>medicines</span><span>cash &amp; jewellery</span><span>important documents</span><span>live animals</span>
+    </div>
+    <p style="margin-top:16px"><a href="https://drawr.dashovia.app/terms#prohibited">See the full list and our Terms →</a></p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:780px">
+    <p class="kicker">FAQ</p>
+    <h2>Questions, answered.</h2>
+    <details><summary>Where does Drawr work?</summary><p>Bengaluru and Mumbai, starting with areas close to our storeroom. Enter your pincode when you book and we'll tell you right away.</p></details>
+    <details><summary>Do I need the app?</summary><p>No. The apps for iPhone and Android are on their way. Until then, you book on the website and manage everything from your private Drawr page, which you can add to your home screen.</p></details>
+    <details><summary>Why do you open my boxes?</summary><p>To photograph every item for you, and to make sure nothing illegal or dangerous ends up next to other people's things. You agree to this inspection when you create your account. See section 6 of our <a href="https://drawr.dashovia.app/terms#inspection">Terms</a>.</p></details>
+    <details><summary>What if something gets damaged?</summary><p>Each box is covered up to ₹5,000. Report it within 48 hours of delivery with photos and we'll sort it out.</p></details>
+    <details><summary>How do I get everything back?</summary><p>Select all your boxes in the app and request a delivery. Billing stops the day your last box leaves our storeroom (after the 3-month minimum).</p></details>
+    <div class="cta" style="margin-top:32px"><a class="btn" href="https://drawr.dashovia.app/#book">Book a free pickup</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dashovia Innovations · <a href="mailto:contact@dashovia.app">contact@dashovia.app</a></span>
+    <nav aria-label="Drawr policies">
+      <a href="https://drawr.dashovia.app/terms">Terms</a>
+      <a href="https://drawr.dashovia.app/privacy">Privacy</a>
+      <a href="https://drawr.dashovia.app/refunds">Refunds</a>
+      <a href="https://drawr.dashovia.app/support">Support</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
