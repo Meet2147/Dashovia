@@ -46,7 +46,7 @@ export default function Apps() {
 
 function statusStyle(status) {
   if (status === "Coming soon") return "border-line text-ink-soft"
-  if (status === "Beta" || status === "Pre-order") return "border-denim bg-denim text-cream"
+  if (status === "Beta" || status === "Pre-order" || status === "Early access") return "border-denim bg-denim text-cream"
   return "border-tomato bg-tomato text-cream"
 }
 

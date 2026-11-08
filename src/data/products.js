@@ -193,14 +193,14 @@ export const appProducts = [
     name: "Drawr: Valet Storage",
     tagline: "Your flat is not a godown.",
     category: "Lifestyle",
-    status: "Live on the web",
+    status: "Early access",
     platforms: ["Web", "iPhone", "Android"],
     summary:
       "Drawr is valet storage for your extra stuff. We pick up your boxes, photograph every item, store it safely and deliver anything back next day. Track it all in the app. From ₹299/box a month.",
     highlights: [
       "Every item photographed and searchable, like your own closet",
       "Next-day delivery of a single jacket or a whole box, with a live rider map",
-      "Bengaluru and Mumbai; iPhone and Android apps coming soon",
+      "Early access in Mumbai: the first 20 get in; iPhone and Android apps soon",
     ],
     icon: "/apps/drawr/icon.png",
     poster: "/apps/drawr/poster.webp",
