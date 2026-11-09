@@ -774,6 +774,35 @@ export const appProducts = [
     privacyUrl: "/apps/spill/privacy/",
     supportEmail: "contact@dashovia.app",
   },
+  {
+    slug: "metrorouter",
+    name: "MetroRouter: Metro & Local",
+    tagline: "Which train, which way, where to change.",
+    category: "Navigation",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "Just moved to Mumbai, Pune, Delhi, Bengaluru or Ahmedabad? Pick two stations and MetroRouter tells you which line to board, which direction, fast or slow local, where to change and roughly what it costs. Everything works offline.",
+    highlights: [
+      "Step-by-step metro and local train routes with fares, fully offline",
+      "City Guide for newcomers: tickets, passes, rush hour and mega blocks",
+      "In English, हिन्दी, मराठी and ગુજરાતી",
+    ],
+    icon: "/apps/metrorouter/icon.png",
+    poster: "/apps/metrorouter/poster.webp",
+    screenshots: [
+      { src: "/apps/metrorouter/screens/01-route.webp", alt: "Andheri to CSMT: Western fast local to Dadar, then Central to CSMT" },
+      { src: "/apps/metrorouter/screens/02-plan.webp", alt: "Planning a trip between two Mumbai stations" },
+      { src: "/apps/metrorouter/screens/03-lines.webp", alt: "Every Mumbai metro and local line" },
+      { src: "/apps/metrorouter/screens/04-guide.webp", alt: "City Guide explaining Sunday mega blocks" },
+      { src: "/apps/metrorouter/screens/05-hindi.webp", alt: "A metro route shown in Hindi" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/metrorouter/privacy/",
+    supportUrl: "/apps/metrorouter/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "meet@dashovia.com",
+  },
 ]
 
 export const portfolioStats = {
