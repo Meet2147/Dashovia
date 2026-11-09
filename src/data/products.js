@@ -789,6 +789,7 @@ export const appProducts = [
       "In English, हिन्दी, मराठी and ગુજરાતી",
     ],
     icon: "/apps/metrorouter/icon.png",
+    video: "/apps/metrorouter/preview.mp4",
     poster: "/apps/metrorouter/poster.webp",
     screenshots: [
       { src: "/apps/metrorouter/screens/01-route.webp", alt: "Andheri to CSMT: Western fast local to Dadar, then Central to CSMT" },
