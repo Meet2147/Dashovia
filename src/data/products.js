@@ -804,6 +804,36 @@ export const appProducts = [
     termsUrl: TERMS_OF_USE_URL,
     supportEmail: "meet@dashovia.com",
   },
+  {
+    slug: "scriptslay",
+    name: "Scriptslay: Teleprompter",
+    tagline: "Slay every take. Script on screen.",
+    category: "Photo & Video",
+    status: "Coming soon",
+    platforms: ["iPhone"],
+    summary:
+      "A teleprompter for creators. Your script scrolls right under the camera while you record, so it looks like you memorized it. Slay Sync follows your voice and waits when you pause, and templates get you from blank page to recording fast.",
+    highlights: [
+      "Script sits right under the lens while you film",
+      "Slay Sync scrolls when you talk and waits when you pause",
+      "No account; scripts and videos stay on your iPhone",
+    ],
+    icon: "/apps/scriptslay/icon.png",
+    video: "/apps/scriptslay/preview.mp4",
+    poster: "/apps/scriptslay/poster.webp",
+    screenshots: [
+      { src: "/apps/scriptslay/screens/01-recorder.webp", alt: "The recorder with the script scrolling right under the camera" },
+      { src: "/apps/scriptslay/screens/02-home.webp", alt: "Your scripts with word counts and read times" },
+      { src: "/apps/scriptslay/screens/03-templates.webp", alt: "Creator templates like Storytime hook and Hot take" },
+      { src: "/apps/scriptslay/screens/04-editor.webp", alt: "The script editor with word count and read time" },
+      { src: "/apps/scriptslay/screens/05-prompter.webp", alt: "Full-screen prompter mode for rigs and other cameras" },
+    ],
+    appStoreUrl: null,
+    privacyUrl: "/apps/scriptslay/privacy/",
+    supportUrl: "/apps/scriptslay/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "contact@dashovia.app",
+  },
 ]
 
 export const portfolioStats = {
