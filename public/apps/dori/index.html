@@ -7,7 +7,7 @@
 <meta name="referrer" content="no-referrer" />
 <title>DORI · Private invitation</title>
 <meta name="description" content="A private wedding invitation. Enter your code to open it." />
-<link rel="icon" href="icon.png" />
+<link rel="icon" href="/apps/dori/icon.png" />
 <meta name="theme-color" content="#fbf3e4" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +73,8 @@
 
   // Fetch an encrypted file, reporting progress, then decrypt it.
   async function open(name, k, onProgress) {
-    const res = await fetch(name, { cache: "no-store" });
+    // Absolute, so the page works at /apps/dori and /apps/dori/ alike.
+    const res = await fetch("/apps/dori/" + name, { cache: "no-store" });
     if (!res.ok) throw new Error("fetch");
     const total = Number(res.headers.get("content-length")) || 0;
     let buf;
