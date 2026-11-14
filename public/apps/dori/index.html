@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#efdfc2" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kalam:wght@700&family=Lora:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Baloo+Bhai+2:wght@700;800&family=Lora:wght@400;600;700&family=Rasa:wght@400;600;700&display=swap" rel="stylesheet" />
 <style>
   html, body { margin:0; background:#efdfc2; color:#3a2a1c; font-family:"Lora",Georgia,serif; -webkit-text-size-adjust:100%; }
   .gate { min-height:100svh; display:grid; place-items:center; padding:24px 16px; box-sizing:border-box; }
@@ -31,6 +31,7 @@
   .gate .err { min-height:20px; margin:12px 0 0; font-size:14px; color:#a9401c; }
   .gate .home { display:inline-block; margin-top:18px; font-size:13px; color:#7a634c; }
   #app[hidden], .gate[hidden] { display:none; }
+  html { scroll-behavior:smooth; }
 </style>
 </head>
 <body>
@@ -102,27 +103,74 @@
   }
 
   function wire(app) {
-    const film = app.querySelector("[data-play]");
-    if (film) film.addEventListener("click", async () => {
-      if (film.dataset.state) return;
-      film.dataset.state = "loading";
-      const label = film.querySelector("[data-play-label]");
-      try {
-        const plain = await open("f.bin", key, (p) => { label.textContent = `Loading ${Math.round(p * 100)}%`; });
-        const video = document.createElement("video");
-        video.src = URL.createObjectURL(new Blob([plain], { type: "video/mp4" }));
-        video.controls = true; video.playsInline = true; video.autoplay = true;
-        video.setAttribute("playsinline", "");
-        const box = document.createElement("div");
-        box.className = "film"; box.style.cursor = "auto";
-        box.appendChild(video);
-        film.replaceWith(box);
-        video.play().catch(() => {});
-      } catch (e) {
-        delete film.dataset.state;
-        label.textContent = "Couldn't load. Tap to try again";
-      }
+    // The film is the hero: start loading it as soon as the page opens, then play it muted.
+    const film = app.querySelector("[data-film]");
+    if (film) {
+      const label = film.querySelector("[data-film-label]");
+      const bar = film.querySelector("[data-film-bar]");
+      const load = async () => {
+        try {
+          const plain = await open("f.bin", key, (p) => {
+            bar.style.width = `${Math.round(p * 100)}%`;
+            label.textContent = `Loading the film · ${Math.round(p * 100)}%`;
+          });
+          const video = document.createElement("video");
+          video.src = URL.createObjectURL(new Blob([plain], { type: "video/mp4" }));
+          video.muted = true; video.playsInline = true; video.autoplay = true; video.controls = true;
+          video.setAttribute("playsinline", ""); video.setAttribute("muted", "");
+          video.addEventListener("volumechange", () => film.classList.toggle("unmuted", !video.muted));
+          film.querySelector("img").replaceWith(video);
+          film.querySelector("[data-film-load]").remove();
+          film.classList.add("ready");
+          video.play().catch(() => {});
+        } catch (e) {
+          label.textContent = "Couldn't load the film. Tap to try again";
+          film.addEventListener("click", load, { once: true });
+        }
+      };
+      load();
+      const sound = film.querySelector("[data-sound]");
+      sound.addEventListener("click", () => {
+        const v = film.querySelector("video");
+        if (!v) return;
+        v.muted = false; v.currentTime = 0; v.play().catch(() => {});
+      });
+    }
+
+    // Days to go on each function.
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    app.querySelectorAll("[data-count]").forEach((el) => {
+      const [y, m, d] = el.dataset.count.split("-").map(Number);
+      const days = Math.round((new Date(y, m - 1, d) - today) / 86400000);
+      el.textContent = days > 1 ? `${days} days to go` : days === 1 ? "Tomorrow" : days === 0 ? "Today" : "Done";
     });
+
+    // Add a function to the phone's calendar (all-day; the app has the exact time and venue).
+    app.querySelectorAll("[data-ics]").forEach((btn) => btn.addEventListener("click", () => {
+      const d = btn.dataset.ics;
+      const next = new Date(Date.UTC(+d.slice(0, 4), +d.slice(4, 6) - 1, +d.slice(6, 8) + 1)).toISOString().slice(0, 10).replace(/-/g, "");
+      const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//DORI//Invite//EN", "BEGIN:VEVENT",
+        `UID:dori-${d}@dashovia.com`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`,
+        `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${next}`, `SUMMARY:${btn.dataset.icsTitle.replace(/([,;])/g, "\\$1")}`,
+        "DESCRIPTION:Timings, venue and directions are in the DORI app.", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+      a.download = `dori-${d}.ics`;
+      document.body.appendChild(a); a.click(); a.remove();
+    }));
+
+    // Highlight the function in view on the date rail.
+    const rail = [...app.querySelectorAll("[data-rail]")];
+    const scenes = [...app.querySelectorAll("[data-scene]")];
+    let ticking = false;
+    const mark = () => {
+      ticking = false;
+      const line = innerHeight * 0.4;
+      const on = scenes.find((s) => { const r = s.getBoundingClientRect(); return r.top <= line && r.bottom > line; });
+      rail.forEach((a) => a.setAttribute("aria-current", on && a.getAttribute("href") === `#${on.id}` ? "true" : "false"));
+    };
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(mark); } }, { passive: true });
+    mark();
 
     const apk = app.querySelector("[data-apk]");
     if (apk) apk.addEventListener("click", async () => {
