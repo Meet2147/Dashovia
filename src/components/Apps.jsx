@@ -60,7 +60,7 @@ function AppCard({ app, number, flip }) {
     : app.waitlistUrl
       ? { href: app.waitlistUrl, label: "Join the waitlist" }
       : app.pageUrl
-        ? { href: app.pageUrl, label: `See ${app.name.split(":")[0]}` }
+        ? { href: app.pageUrl, label: app.pageLabel ?? `See ${app.name.split(":")[0]}` }
       : app.webUrl
         ? { href: app.webUrl, label: "Visit site", external: true }
         : null

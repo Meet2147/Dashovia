@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="referrer" content="no-referrer" />
+<title>DORI · Private invitation</title>
+<meta name="description" content="A private wedding invitation. Enter your code to open it." />
+<link rel="icon" href="icon.png" />
+<meta name="theme-color" content="#efdfc2" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kalam:wght@700&family=Lora:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; background:#efdfc2; color:#3a2a1c; font-family:"Lora",Georgia,serif; -webkit-text-size-adjust:100%; }
+  .gate { min-height:100svh; display:grid; place-items:center; padding:24px 16px; box-sizing:border-box; }
+  .gate form { width:100%; max-width:380px; text-align:center; background:#f8eedb; border:1.5px solid #c39236; outline:1px solid #c39236;
+    outline-offset:-7px; padding:40px 28px 32px; box-sizing:border-box; }
+  .gate svg { width:150px; height:auto; display:block; margin:0 auto 18px; }
+  .gate .k { font:600 12px/1 "Lora",serif; letter-spacing:.22em; text-transform:uppercase; color:#a9401c; margin:0; }
+  .gate h1 { font:400 34px/1.05 "Archivo Black","Arial Black",sans-serif; color:#1f4a36; margin:10px 0 8px; }
+  .gate p.s { margin:0 0 22px; font-size:15px; line-height:1.5; color:#5a4532; }
+  .gate label { display:block; text-align:left; font-size:13px; font-weight:600; color:#5a4532; margin-bottom:6px; }
+  .gate input { width:100%; box-sizing:border-box; font:600 18px/1 "Lora",serif; letter-spacing:.12em; text-transform:uppercase; text-align:center;
+    color:#1f4a36; background:#fffaf0; border:1.5px solid #c9b48c; border-radius:12px; padding:14px 12px; }
+  .gate input:focus { outline:2px solid #1f4a36; outline-offset:1px; border-color:#1f4a36; }
+  .gate button { margin-top:12px; width:100%; font:700 16px/1 "Lora",serif; color:#f8eedb; background:#1f4a36; border:0; border-radius:12px;
+    padding:15px; cursor:pointer; }
+  .gate button:disabled { opacity:.7; cursor:progress; }
+  .gate .err { min-height:20px; margin:12px 0 0; font-size:14px; color:#a9401c; }
+  .gate .home { display:inline-block; margin-top:18px; font-size:13px; color:#7a634c; }
+  #app[hidden], .gate[hidden] { display:none; }
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <form id="form" autocomplete="off">
+    <svg viewBox="0 0 200 150" aria-hidden="true"><path d="M20 150 V92 C20 60 50 36 100 8 C150 36 180 60 180 92 V150" fill="none" stroke="#c39236" stroke-width="3"/><path d="M38 150 V96 C38 70 62 50 100 28 C138 50 162 70 162 96 V150" fill="none" stroke="#1f4a36" stroke-width="7"/><path d="M100 60 C103 70 108 74 116 76 C108 78 103 84 100 96 C97 84 92 78 84 76 C92 74 97 70 100 60Z" fill="#c4562f"/></svg>
+    <p class="k">DORI</p>
+    <h1>A private invitation</h1>
+    <p class="s">This page is only for invited families. Enter the code from your invitation.</p>
+    <label for="code">Invitation code</label>
+    <input id="code" name="code" required autocapitalize="characters" spellcheck="false" enterkeyhint="go" />
+    <button id="go" type="submit">Open the invitation</button>
+    <p class="err" id="err" role="alert"></p>
+    <a class="home" href="https://www.dashovia.com/#apps">dashovia.com</a>
+  </form>
+</div>
+<div id="app" hidden></div>
+<script>
+(() => {
+  const SALT = "BapNALxEXTJtuQv8JkBAQw==";
+  const ITER = 310000;
+  const STORE = "dori-invite-code";
+  const $ = (id) => document.getElementById(id);
+  const norm = (s) => s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  let key = null;
+
+  async function deriveKey(code) {
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(code), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(SALT), iterations: ITER, hash: "SHA-256" }, base,
+      { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+  }
+
+  // Fetch an encrypted file, reporting progress, then decrypt it.
+  async function open(name, k, onProgress) {
+    const res = await fetch(name, { cache: "no-cache" });
+    if (!res.ok) throw new Error("fetch");
+    const total = Number(res.headers.get("content-length")) || 0;
+    let buf;
+    if (onProgress && res.body && total) {
+      const reader = res.body.getReader();
+      const out = new Uint8Array(total);
+      let got = 0;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        out.set(value, got);
+        got += value.length;
+        onProgress(got / total);
+      }
+      buf = out.subarray(0, got);
+    } else {
+      buf = new Uint8Array(await res.arrayBuffer());
+    }
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.subarray(0, 12) }, k, buf.subarray(12));
+  }
+
+  async function unlock(code, remember) {
+    const k = await deriveKey(code);
+    const plain = await open("p.bin", k); // throws if the code is wrong
+    key = k;
+    const app = $("app");
+    app.innerHTML = new TextDecoder().decode(plain);
+    $("gate").hidden = true;
+    app.hidden = false;
+    const t = app.querySelector("[data-title]"); if (t) document.title = t.dataset.title;
+    if (remember) { try { localStorage.setItem(STORE, code); } catch (e) {} }
+    wire(app);
+  }
+
+  function wire(app) {
+    const film = app.querySelector("[data-play]");
+    if (film) film.addEventListener("click", async () => {
+      if (film.dataset.state) return;
+      film.dataset.state = "loading";
+      const label = film.querySelector("[data-play-label]");
+      try {
+        const plain = await open("f.bin", key, (p) => { label.textContent = `Loading ${Math.round(p * 100)}%`; });
+        const video = document.createElement("video");
+        video.src = URL.createObjectURL(new Blob([plain], { type: "video/mp4" }));
+        video.controls = true; video.playsInline = true; video.autoplay = true;
+        video.setAttribute("playsinline", "");
+        const box = document.createElement("div");
+        box.className = "film"; box.style.cursor = "auto";
+        box.appendChild(video);
+        film.replaceWith(box);
+        video.play().catch(() => {});
+      } catch (e) {
+        delete film.dataset.state;
+        label.textContent = "Couldn't load. Tap to try again";
+      }
+    });
+
+    const apk = app.querySelector("[data-apk]");
+    if (apk) apk.addEventListener("click", async () => {
+      if (apk.getAttribute("aria-busy") === "true") return;
+      const label = apk.querySelector("[data-apk-label]");
+      apk.setAttribute("aria-busy", "true");
+      try {
+        const plain = await open("a.bin", key, (p) => { label.textContent = `Downloading ${Math.round(p * 100)}%`; });
+        const url = URL.createObjectURL(new Blob([plain], { type: "application/vnd.android.package-archive" }));
+        const a = document.createElement("a");
+        a.href = url; a.download = "DORI.apk";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        label.textContent = "Downloaded. Open DORI.apk";
+      } catch (e) {
+        label.textContent = "Couldn't download. Tap to try again";
+      }
+      apk.removeAttribute("aria-busy");
+    });
+
+    const lock = app.querySelector("[data-lock]");
+    if (lock) lock.addEventListener("click", () => {
+      try { localStorage.removeItem(STORE); } catch (e) {}
+      location.reload();
+    });
+  }
+
+  $("form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const code = norm($("code").value);
+    const go = $("go");
+    $("err").textContent = "";
+    if (!code) return;
+    go.disabled = true; go.textContent = "Opening…";
+    try {
+      await unlock(code, true);
+    } catch (e) {
+      $("err").textContent = "That code doesn't match. Check your invitation and try again.";
+      go.disabled = false; go.textContent = "Open the invitation";
+    }
+  });
+
+  let saved = null;
+  try { saved = localStorage.getItem(STORE); } catch (e) {}
+  if (saved) unlock(saved, false).catch(() => { try { localStorage.removeItem(STORE); } catch (e) {} });
+})();
+</script>
+</body>
+</html>

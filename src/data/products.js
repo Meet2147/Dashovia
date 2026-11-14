@@ -221,6 +221,25 @@ export const appProducts = [
     supportEmail: "contact@dashovia.app",
   },
   {
+    slug: "dori",
+    name: "DORI: Wedding Invites",
+    tagline: "The sacred thread that binds.",
+    category: "Events",
+    status: "Invite only",
+    platforms: ["iPhone", "Android"],
+    summary:
+      "DORI is a private app for one wedding at a time. The couple sends every family a personal WhatsApp invite and gets an exact headcount for each function. Guests get the functions with timings and directions, and a photo vault that stays open for 30 days.",
+    highlights: [
+      "A personal link for every family, and replies come back as a headcount per function",
+      "Every function with timings, venue and directions; the couple can update it any time",
+      "Photographers' albums and guests' photos in HD, kept for 30 days after the wedding",
+    ],
+    icon: "/apps/dori/icon.png",
+    pageUrl: "/apps/dori/",
+    pageLabel: "Open with invite code",
+    supportEmail: "contact@dashovia.app",
+  },
+  {
     slug: "crumbs",
     name: "Crumbs: Lock In & Focus",
     tagline: "Tiny crumbs. Real discipline.",
