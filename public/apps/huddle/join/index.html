@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join my squad on Huddle</title>
+<meta name="description" content="Lock in with me on Huddle, the habit tracker you do with your friends.">
+<meta property="og:title" content="Join my squad on Huddle 🔒">
+<meta property="og:description" content="Lock in with me. Tap to join the habit and check in together every day.">
+<meta property="og:image" content="https://www.dashovia.com/apps/huddle/icon.png">
+<meta name="apple-itunes-app" content="app-id=6833474817">
+<link rel="icon" type="image/png" href="/apps/huddle/icon.png">
+<style>
+  :root { --bg:#FFFFFF; --ink:#0A0A0A; --muted:#6B6B6B; --cobalt:#2B3DFF; --orange:#FF5A1F; --card:#F2F2F2; color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+  main { max-width:460px; margin:0 auto; padding:40px 20px 56px; }
+  .icon { width:72px; height:72px; border-radius:18px; display:block; }
+  .tag { font:700 12px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--orange); margin:28px 0 10px; }
+  h1 { font:900 54px/0.92 "SF Pro Display", -apple-system, "Arial Narrow", sans-serif; font-stretch:condensed; letter-spacing:-0.02em; text-transform:uppercase; margin:0; }
+  h1 span { color:var(--cobalt); display:block; }
+  .habit { margin:22px 0 0; background:var(--ink); color:#fff; border-radius:22px; padding:18px 20px; font-weight:800; font-size:20px; }
+  .habit small { display:block; color:#BFC5FF; font-weight:600; font-size:14px; margin-bottom:4px; }
+  .btn { display:block; text-align:center; text-decoration:none; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:.02em; border-radius:999px; padding:18px; margin-top:14px; }
+  .primary { background:var(--orange); color:#fff; margin-top:28px; }
+  .secondary { background:var(--card); color:var(--ink); }
+  ol { color:var(--muted); padding-left:20px; margin:26px 0 0; font-size:15px; }
+  li { margin:6px 0; }
+  footer { margin-top:40px; font-size:13px; color:var(--muted); }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="/apps/huddle/icon.png" alt="Huddle">
+  <p class="tag">you got invited 👀</p>
+  <h1>Lock in<span>with me.</span></h1>
+  <div class="habit" id="habit" hidden><small>the habit</small><span id="habit-name"></span></div>
+
+  <a class="btn primary" href="https://apps.apple.com/app/id6833474817">Get Huddle</a>
+  <a class="btn secondary" id="open" href="#">I have Huddle, open it</a>
+
+  <ol>
+    <li>Get Huddle from the App Store (it's free).</li>
+    <li>Come back and tap this invite link again.</li>
+    <li>Huddle opens and you're in the squad. Check in daily, get the W.</li>
+  </ol>
+
+  <footer>Huddle for iPhone · <a href="/apps/huddle/privacy/">Privacy</a> · <a href="/apps/huddle/support/">Support</a></footer>
+</main>
+<script>
+  // Link shape: /apps/huddle/join/?c=<iCloud share code>&h=<habit name>
+  var params = new URLSearchParams(location.search);
+  var code = params.get('c');
+  var habit = params.get('h');
+  if (habit) {
+    document.getElementById('habit-name').textContent = habit;
+    document.getElementById('habit').hidden = false;
+    document.title = 'Lock in with me on Huddle: ' + habit;
+  }
+  var open = document.getElementById('open');
+  if (code) { open.href = 'huddle://join/' + encodeURIComponent(code); } else { open.hidden = true; }
+</script>
+</body>
+</html>

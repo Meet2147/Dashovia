@@ -5,3 +5,7 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     autoDeployTrigger: commit
+    headers:
+      - path: /.well-known/apple-app-site-association
+        name: Content-Type
+        value: application/json

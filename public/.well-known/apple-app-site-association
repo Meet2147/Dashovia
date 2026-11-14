@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["C9NLF34677.com.meetjethwa.huddle"],
+        "components": [
+          { "/": "/apps/huddle/join/*", "comment": "Huddle squad invite links" }
+        ]
+      }
+    ]
+  }
+}
