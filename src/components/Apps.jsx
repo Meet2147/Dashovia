@@ -117,6 +117,12 @@ function AppCard({ app, number, flip }) {
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             ) : null}
+            {app.appStoreUrl && app.pageUrl && app.pageLabel ? (
+              <a href={app.pageUrl} className="btn btn-sm">
+                {app.pageLabel}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ) : null}
             <SmallLinks app={app} />
           </div>
         </div>

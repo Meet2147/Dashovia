@@ -225,7 +225,7 @@ export const appProducts = [
     name: "DORI: Wedding Invites",
     tagline: "The sacred thread that binds.",
     category: "Events",
-    status: "Invite only",
+    status: "On the App Store",
     platforms: ["iPhone", "Android"],
     summary:
       "DORI is a private app for one wedding at a time. The couple sends every family a personal WhatsApp invite and gets an exact headcount for each function. Guests get the functions with timings and directions, and a photo vault that stays open for 30 days.",
@@ -237,6 +237,9 @@ export const appProducts = [
     icon: "/apps/dori/icon.png",
     pageUrl: "/apps/dori/",
     pageLabel: "Open with invite code",
+    appStoreUrl: "https://apps.apple.com/in/app/dori-wedding-invites/id6834758814",
+    privacyUrl: "/apps/dori/privacy/",
+    supportUrl: "/apps/dori/support/",
     supportEmail: "contact@dashovia.app",
   },
   {
