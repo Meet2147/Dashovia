@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SutraOS — A private AI chief of staff · Dashovia</title>
+<meta name="description" content="SutraOS is a private AI chief of staff that lives in a small box at home. Send it a bill on Telegram and it files it, remembers it and reminds you before it's due.">
+<link rel="icon" type="image/png" href="/apps/sutra/icon.png">
+<link rel="apple-touch-icon" href="/apps/sutra/icon.png">
+<meta property="og:title" content="SutraOS — Forward it. It's sorted.">
+<meta property="og:description" content="A private AI chief of staff in a small box at home. Send it a bill on Telegram; it files it and reminds you before it's due.">
+<meta property="og:image" content="https://www.dashovia.com/apps/sutra/poster.webp">
+<meta property="og:url" content="https://www.dashovia.com/apps/sutra/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4efe6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Paper & Ink: warm paper, ink type, one tomato accent */
+  :root {
+    --paper:#f4efe6; --card:#fbf8f2; --ink:#1a1714; --muted:#6a625a; --faint:#9a9188; --line:#e2dacd;
+    --tomato:#c8331f; --tomato-bright:#e2462b; --tomato-soft:#f8e2dc; --ok:#2f6b4f; --ok-soft:#e3efe7;
+    --serif:"Instrument Serif", Georgia, serif; --sans:"Inter Tight", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; overflow-x:clip; background:var(--paper); color:var(--ink); font:17px/1.6 var(--sans); -webkit-font-smoothing:antialiased; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.35; z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  main, header, footer { position:relative; z-index:1; }
+  a { color:var(--tomato); }
+  img, video { max-width:100%; height:auto; display:block; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  h1, h2, h3 { margin:0; font-weight:400; }
+  h1 { font:italic 400 clamp(52px, 9vw, 108px)/.95 var(--serif); letter-spacing:-.02em; }
+  h2 { font:italic 400 clamp(36px, 5.4vw, 60px)/1 var(--serif); letter-spacing:-.015em; }
+  h3 { font:600 18px/1.3 var(--sans); letter-spacing:-.01em; }
+  p { margin:0; }
+  em.t { font-style:italic; color:var(--tomato); }
+  .kicker { font:500 12px var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--muted); display:inline-flex; align-items:center; gap:10px; }
+  .kicker .dot { width:7px; height:7px; border-radius:50%; background:var(--tomato-bright); }
+  .lede { font-size:clamp(18px, 2vw, 21px); color:var(--muted); max-width:32em; }
+  .muted { color:var(--muted); }
+  section { padding:88px 0; scroll-margin-top:64px; }
+  .rule { border:0; border-top:1px solid var(--line); margin:0; }
+
+  /* nav */
+  .nav { position:sticky; top:0; z-index:10; background:rgba(244,239,230,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav .wrap { display:flex; align-items:center; gap:14px; height:62px; }
+  .brand { display:flex; align-items:center; gap:10px; font:600 19px var(--sans); text-decoration:none; color:var(--ink); letter-spacing:-.02em; }
+  .brand img { width:32px; height:32px; border-radius:8px; }
+  .back { font-size:14px; color:var(--muted); text-decoration:none; margin-left:auto; }
+  .back:hover { color:var(--ink); }
+  @media (max-width:520px) { .back .long { display:none; } }
+
+  /* buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--ink); border-radius:999px; background:var(--ink); color:var(--paper); font:600 16px var(--sans); padding:13px 22px; text-decoration:none; white-space:nowrap; transition:transform .12s, background .12s; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn.ghost { background:transparent; color:var(--ink); }
+  .btn.ghost:hover { background:var(--card); }
+  .btn.sm { padding:8px 15px; font-size:14px; }
+  .btn:focus-visible { outline:3px solid var(--tomato-bright); outline-offset:3px; }
+
+  /* hero */
+  .hero { padding:72px 0 80px; }
+  .hero .wrap { display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
+  .hero h1 { margin:22px 0 22px; }
+  .ctas { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+  .fine { margin-top:14px; font-size:13px; color:var(--faint); }
+  @media (max-width:900px) { .hero .wrap { grid-template-columns:1fr; gap:44px; } }
+
+  /* chat illustration (not any app's real UI) */
+  .chat { background:var(--card); border:1px solid var(--line); border-radius:26px; padding:18px; box-shadow:0 30px 60px -30px rgba(40,30,20,.35); max-width:420px; justify-self:center; width:100%; }
+  .chat-head { display:flex; align-items:center; gap:10px; padding:4px 6px 14px; border-bottom:1px solid var(--line); margin-bottom:14px; }
+  .chat-head img { width:34px; height:34px; border-radius:9px; }
+  .chat-head b { font-weight:600; font-size:15px; display:block; line-height:1.2; }
+  .chat-head small { color:var(--faint); font:12px var(--mono); }
+  .bubble { max-width:86%; padding:10px 13px; border-radius:16px; font-size:14.5px; line-height:1.45; margin:8px 0; white-space:pre-line; }
+  .me { margin-left:auto; background:var(--ink); color:var(--paper); border-bottom-right-radius:5px; }
+  .bot { background:#fff; border:1px solid var(--line); border-bottom-left-radius:5px; }
+  .photo { margin-left:auto; width:62%; border-radius:14px; border:1px solid var(--line); overflow:hidden; background:#fff; }
+  .photo .bill { padding:12px 14px; font:11px/1.55 var(--mono); color:#333; }
+  .photo .bill b { font-weight:600; }
+  .when { text-align:center; font:11px var(--mono); color:var(--faint); margin:14px 0 4px; letter-spacing:.06em; }
+  .caption { text-align:center; font-size:12px; color:var(--faint); margin-top:12px; }
+
+  /* film */
+  .film video { width:100%; border-radius:22px; border:1px solid var(--line); background:var(--ink); box-shadow:0 30px 60px -34px rgba(40,30,20,.45); }
+  .film .head { display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:28px; }
+
+  /* grid of features */
+  .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:40px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px; }
+  .card .ico { font:500 12px var(--mono); color:var(--tomato); letter-spacing:.1em; margin-bottom:14px; display:block; }
+  .card p { margin-top:8px; color:var(--muted); font-size:15.5px; line-height:1.55; }
+  @media (max-width:900px) { .grid { grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px) { .grid { grid-template-columns:1fr; } }
+
+  /* OS concept strip */
+  .os { display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid var(--line); border-radius:20px; overflow:hidden; margin-top:40px; background:var(--card); }
+  .os div { padding:22px; border-right:1px solid var(--line); }
+  .os div:last-child { border-right:0; }
+  .os .a { font:500 12px var(--mono); color:var(--faint); letter-spacing:.08em; text-transform:uppercase; }
+  .os .b { font:italic 400 28px/1.1 var(--serif); margin-top:10px; }
+  @media (max-width:800px) { .os { grid-template-columns:1fr 1fr; } .os div:nth-child(2) { border-right:0; } .os div:nth-child(-n+2) { border-bottom:1px solid var(--line); } }
+
+  /* shots */
+  .shots { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:40px; }
+  .shots figure { margin:0; }
+  .shots img { border-radius:16px; border:1px solid var(--line); }
+  .shots figcaption { font-size:14px; color:var(--muted); margin-top:10px; }
+  @media (max-width:700px) { .shots { grid-template-columns:1fr; } }
+
+  /* table */
+  table { width:100%; border-collapse:collapse; margin-top:32px; font-size:15.5px; background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  th, td { text-align:left; padding:15px 18px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font:500 11.5px var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
+  tr:last-child td { border-bottom:0; }
+  td code { font:13px var(--mono); background:var(--paper); padding:2px 6px; border-radius:6px; }
+  .tablewrap { overflow-x:auto; }
+
+  /* privacy */
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  .ticks { list-style:none; padding:0; margin:0; display:grid; gap:14px; }
+  .ticks li { display:flex; gap:12px; }
+  .ticks li::before { content:""; flex:none; width:8px; height:8px; margin-top:10px; border-radius:50%; background:var(--tomato-bright); }
+  @media (max-width:800px) { .two { grid-template-columns:1fr; gap:28px; } }
+
+  /* faq */
+  details { border-bottom:1px solid var(--line); padding:18px 0; }
+  summary { cursor:pointer; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; font:400 22px/1 var(--sans); color:var(--muted); }
+  details[open] summary::after { content:"–"; }
+  details p { margin-top:10px; color:var(--muted); max-width:62ch; }
+
+  /* final cta */
+  .final { text-align:center; padding:110px 0; }
+  .final h2 { font-size:clamp(44px, 7vw, 84px); }
+  .final .ctas { justify-content:center; }
+
+  footer { border-top:1px solid var(--line); padding:28px 0 40px; font-size:14px; color:var(--muted); }
+  footer .wrap { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .btn { transition:none; } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/apps/sutra/"><img src="/apps/sutra/icon.png" alt="">SutraOS</a>
+    <a class="back" href="/#apps">← <span class="long">All Dashovia </span>apps</a>
+    <a class="btn sm" href="mailto:contact@dashovia.app?subject=SutraOS%20early%20access">Early access</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="kicker"><span class="dot"></span>Sunday build · early access</span>
+        <h1>Forward it.<br>It's <em class="t">sorted.</em></h1>
+        <p class="lede">SutraOS is a private AI chief of staff that lives in a small box at home. Send it a bill on Telegram and it files it, remembers it and reminds you before it's due.</p>
+        <div class="ctas">
+          <a class="btn" href="mailto:contact@dashovia.app?subject=SutraOS%20early%20access">Get early access</a>
+          <a class="btn ghost" href="#film">Watch the 60s film</a>
+        </div>
+        <p class="fine">Runs on a Raspberry Pi, a Mac or Linux. No new phone, no new app.</p>
+      </div>
+
+      <div class="chat" aria-label="Example conversation with a SutraOS box">
+        <div class="chat-head">
+          <img src="/apps/sutra/icon.png" alt="">
+          <div><b>My Sutra box</b><small>on Telegram</small></div>
+        </div>
+        <div class="photo" aria-label="A photo of an electricity bill">
+          <div class="bill"><b>TATA POWER</b><br>Consumer No: 9000 1234 5678<br>Due Date: 05/12/2026<br><b>Amount Payable: Rs 1,240.00</b></div>
+        </div>
+        <div class="bubble bot">🧾 Tata Power bill · ₹1,240 · due on 5 Dec
+⏰ I'll remind you on 3 Dec at 9:00 am.</div>
+        <div class="bubble me">what else is due this month?</div>
+        <div class="bubble bot">Coming up:
+#1  Tata Power ₹1,240 · on 5 Dec</div>
+        <div class="when">3 DEC · 9:00 AM</div>
+        <div class="bubble bot">🧾 Tata Power ₹1,240 is due on Sat (5 Dec). Reply /paid when it's done.</div>
+        <div class="bubble me">/paid</div>
+        <div class="bubble bot">✅ Marked paid. I won't remind you again.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="film" id="film">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="kicker">60 seconds</span>
+          <h2 style="margin-top:12px">your computer runs apps.<br>what runs your <em class="t">agents?</em></h2>
+        </div>
+        <p class="muted" style="max-width:30em">The whole tour: agents you can watch think, a scheduler, memory, vision, automations and the Raspberry Pi image.</p>
+      </div>
+      <video src="/apps/sutra/film.mp4" poster="/apps/sutra/poster.webp" controls playsinline preload="none" width="1280" height="720" aria-label="SutraOS launch film"></video>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <span class="kicker">What it does</span>
+      <h2 style="margin-top:12px">Small, everyday <em class="t">help.</em></h2>
+      <div class="grid">
+        <div class="card"><span class="ico">01 · BILLS</span><h3>Forward it, it's sorted</h3><p>Send a photo or PDF of a bill, receipt, warranty card or prescription. It's read, filed and remembered.</p></div>
+        <div class="card"><span class="ico">02 · REMINDERS</span><h3>Never miss a due date</h3><p>Bills: two days before and on the day. Warranties: a month before they end. Follow-up visits: the day before.</p></div>
+        <div class="card"><span class="ico">03 · ASK</span><h3>Ask in plain words</h3><p>"What's due this month?" "Summarize the standup notes." Any message becomes a task, and the answer comes back.</p></div>
+        <div class="card"><span class="ico">04 · MEMORY</span><h3>It remembers</h3><p>Tell it "remember that…" once. Every later task can use it. You can see and delete what it remembers.</p></div>
+        <div class="card"><span class="ico">05 · VISION</span><h3>It can see</h3><p>Reads the text in photos, turns a receipt into a record, and finds photos by what's in them.</p></div>
+        <div class="card"><span class="ico">06 · FAMILY</span><h3>One box for the home</h3><p>Pair your phone with a one-time code, then invite family. Strangers and group chats are ignored.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <span class="kicker">How it works</span>
+      <h2 style="margin-top:12px">An operating system <em class="t">for agents.</em></h2>
+      <p class="lede" style="margin-top:18px">Under the friendly chat is a real OS layer. It manages AI agents the way your computer manages programs, so they share the model fairly and can't do anything you haven't allowed.</p>
+      <div class="os">
+        <div><span class="a">Agents are</span><p class="b">processes</p></div>
+        <div><span class="a">Model calls are</span><p class="b">CPU time</p></div>
+        <div><span class="a">Context is</span><p class="b">RAM, paged to disk</p></div>
+        <div><span class="a">Every action is</span><p class="b">permission-checked</p></div>
+      </div>
+      <div class="shots">
+        <figure><img src="/apps/sutra/screens/01-agent.webp" alt="An agent window showing each step it takes" width="1280" height="720" loading="lazy"><figcaption>Watch any task think, step by step.</figcaption></figure>
+        <figure><img src="/apps/sutra/screens/02-vision.webp" alt="A receipt photo next to the record extracted from it" width="1280" height="720" loading="lazy"><figcaption>A receipt photo becomes a record.</figcaption></figure>
+        <figure><img src="/apps/sutra/screens/03-brain.webp" alt="Long-term memory and a repeating automation" width="1280" height="720" loading="lazy"><figcaption>Memory, and tasks that run on repeat.</figcaption></figure>
+        <figure><img src="/apps/sutra/screens/04-raspberry-pi.webp" alt="Flash the image, boot, and the desktop opens" width="1280" height="720" loading="lazy"><figcaption>Flash the image to a Pi, and it boots into the desktop.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <span class="kicker">Runs on</span>
+      <h2 style="margin-top:12px">A Pi, a Mac, <em class="t">or Linux.</em></h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Machine</th><th>How it thinks</th><th>Good for</th></tr></thead>
+          <tbody>
+            <tr><td>Raspberry Pi 5, 8 GB</td><td>Local models on the box: <code>llama3.2:3b</code> + <code>moondream</code> for vision</td><td>Fully private home box</td></tr>
+            <tr><td>Raspberry Pi 4 / Pi 5, 4 GB</td><td>Local: <code>qwen2.5:1.5b</code> + <code>moondream</code></td><td>Lighter local setup</td></tr>
+            <tr><td>Raspberry Pi 3</td><td>Claude, set up with one command</td><td>Smart answers on old hardware</td></tr>
+            <tr><td>Mac or Linux</td><td>Offline, local models with Ollama, or Claude</td><td>Trying it on your laptop</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap two">
+      <div>
+        <span class="kicker">Privacy</span>
+        <h2 style="margin-top:12px">Your life stays <em class="t">at home.</em></h2>
+      </div>
+      <ul class="ticks">
+        <li>Your documents, memory and reminders live on your box, not in our cloud. We don't have one.</li>
+        <li>Local models by default. Claude is opt-in, for small Pis or harder questions.</li>
+        <li>A forwarded document is only read, never obeyed, so a sneaky PDF can't instruct your box.</li>
+        <li>Account numbers are kept to their last four digits. Personal data is redacted by rules, not by an AI.</li>
+        <li>Nothing on your home network is opened up; the box only connects out.</li>
+        <li>Telegram carries your messages, so photos you send pass through Telegram on the way.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="wrap">
+      <span class="kicker">Questions</span>
+      <h2 style="margin-top:12px">Good <em class="t">questions.</em></h2>
+      <div style="margin-top:28px">
+        <details><summary>Can I get it now?</summary><p>SutraOS is in early access. Email us and we'll send you the image and setup steps.</p></details>
+        <details><summary>Do I need a Raspberry Pi?</summary><p>No. It also runs on a Mac or Linux machine. A Pi is just a cheap, quiet box that can stay on all the time.</p></details>
+        <details><summary>What can I send it?</summary><p>Photos or PDFs of bills, receipts, warranty cards and prescriptions, plus any question in plain words. Voice notes aren't supported yet.</p></details>
+        <details><summary>Does it pay my bills?</summary><p>No. It reminds you and keeps track. It never moves money.</p></details>
+        <details><summary>Do I need an AI subscription?</summary><p>No. On a Pi 4 or 5 it runs local models on the box. If you choose Claude, those API calls are billed to your own Anthropic account.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <span class="kicker"><span class="dot"></span>Sunday build</span>
+      <h2 style="margin:18px 0 26px">Forward it. It's <em class="t">sorted.</em></h2>
+      <div class="ctas">
+        <a class="btn" href="mailto:contact@dashovia.app?subject=SutraOS%20early%20access">Get early access</a>
+        <a class="btn ghost" href="/#apps">More Dashovia apps</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dashovia Innovations · <a href="mailto:contact@dashovia.app">contact@dashovia.app</a></span>
+    <span>SutraOS · early access</span>
+  </div>
+</footer>
+</body>
+</html>

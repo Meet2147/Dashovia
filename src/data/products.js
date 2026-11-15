@@ -189,6 +189,31 @@ export const appProducts = [
     supportEmail: "contact@dashovia.app",
   },
   {
+    slug: "sutra",
+    name: "SutraOS: AI Chief of Staff",
+    tagline: "Forward it. It's sorted.",
+    category: "Productivity",
+    status: "Early access",
+    platforms: ["Raspberry Pi", "Mac", "Linux", "Telegram"],
+    summary:
+      "SutraOS is a private AI chief of staff that lives in a small box at home. Send it a bill on Telegram and it files it, remembers it and reminds you before it's due. Under the hood it's an operating system for AI agents: every action is permission-checked and logged.",
+    highlights: [
+      "Forward a bill, receipt or warranty card; get a reminder before it's due",
+      "Ask it anything on Telegram; it remembers what you tell it",
+      "Runs on a Raspberry Pi with local models, or with Claude on a Pi 3",
+    ],
+    icon: "/apps/sutra/icon.png",
+    poster: "/apps/sutra/poster.webp",
+    screenshots: [
+      { src: "/apps/sutra/screens/01-agent.webp", alt: "An agent window: watch it think, live" },
+      { src: "/apps/sutra/screens/02-vision.webp", alt: "A receipt photo turned into a record" },
+      { src: "/apps/sutra/screens/03-brain.webp", alt: "Long-term memory and automations" },
+      { src: "/apps/sutra/screens/04-raspberry-pi.webp", alt: "Flash the image, boot, and the desktop opens" },
+    ],
+    pageUrl: "/apps/sutra/",
+    supportEmail: "contact@dashovia.app",
+  },
+  {
     slug: "drawr",
     name: "Drawr: Valet Storage",
     tagline: "Your flat is not a godown.",
