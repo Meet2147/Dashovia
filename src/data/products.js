@@ -711,6 +711,27 @@ export const appProducts = [
     supportEmail: "contact@dashovia.app",
   },
   {
+    slug: "tutorly",
+    name: "Tutorly: Study Any Video",
+    tagline: "Stop watching. Start knowing.",
+    category: "Education",
+    status: "Coming soon",
+    platforms: ["iPhone", "iPad", "Mac"],
+    summary:
+      "Paste any YouTube lesson and Tutorly turns it into a TL;DR, chapters, key concepts, a quiz and swipeable flashcards, then plans your days to the exam and sends one puzzle a day from your old videos. Made on your device, synced through your own iCloud.",
+    highlights: [
+      "Notes, chapters, quiz and flashcards from any YouTube lesson",
+      "A study plan that fits your exam date, and a daily puzzle notification",
+      "Private by design: made on your device, no servers, no tracking",
+    ],
+    icon: "/apps/tutorly/icon.png",
+    appStoreUrl: null,
+    privacyUrl: "/apps/tutorly/privacy/",
+    supportUrl: "/apps/tutorly/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "contact@dashovia.app",
+  },
+  {
     slug: "sapience",
     name: "Sapience: Book Wisdom for Life",
     tagline: "Your problem has a chapter.",
