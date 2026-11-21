@@ -732,6 +732,27 @@ export const appProducts = [
     supportEmail: "contact@dashovia.app",
   },
   {
+    slug: "sortd",
+    name: "Sortd: Eisenhower Matrix",
+    tagline: "Get your life sortd.",
+    category: "Productivity",
+    status: "Coming soon",
+    platforms: ["iPhone", "iPad", "Mac", "Android", "Windows"],
+    summary:
+      "The Eisenhower matrix as four program windows on a 1998 desktop. Type tasks like a text and they land in the right window, then tick them off, run a focus timer and check your weekly sortd score. Synced through your own iCloud.",
+    highlights: [
+      "Quick add in plain words: \"pay rent tmrw 6pm !!\" lands in do it now",
+      "Widgets, Live Activity focus timer, Siri and Apple Reminders import",
+      "Private by design: no accounts, no servers, synced through your iCloud",
+    ],
+    icon: "/apps/sortd/icon.png",
+    appStoreUrl: null,
+    privacyUrl: "/apps/sortd/privacy/",
+    supportUrl: "/apps/sortd/support/",
+    termsUrl: TERMS_OF_USE_URL,
+    supportEmail: "contact@dashovia.app",
+  },
+  {
     slug: "sapience",
     name: "Sapience: Book Wisdom for Life",
     tagline: "Your problem has a chapter.",
