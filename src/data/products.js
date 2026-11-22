@@ -736,8 +736,8 @@ export const appProducts = [
     name: "Sortd: Eisenhower Matrix",
     tagline: "Get your life sortd.",
     category: "Productivity",
-    status: "Coming soon",
-    platforms: ["iPhone", "iPad", "Mac", "Android", "Windows"],
+    status: "On the App Store",
+    platforms: ["iPhone", "iPad", "Mac"],
     summary:
       "The Eisenhower matrix as four program windows on a 1998 desktop. Type tasks like a text and they land in the right window, then tick them off, run a focus timer and check your weekly sortd score. Synced through your own iCloud.",
     highlights: [
@@ -746,7 +746,7 @@ export const appProducts = [
       "Private by design: no accounts, no servers, synced through your iCloud",
     ],
     icon: "/apps/sortd/icon.png",
-    appStoreUrl: null,
+    appStoreUrl: "https://apps.apple.com/app/sortd-eisenhower-matrix/id6837717403",
     privacyUrl: "/apps/sortd/privacy/",
     supportUrl: "/apps/sortd/support/",
     termsUrl: TERMS_OF_USE_URL,
