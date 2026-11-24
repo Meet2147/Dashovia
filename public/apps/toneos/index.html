@@ -145,7 +145,10 @@ details[open] summary::after { content: "−"; }
 details p { color: var(--muted); margin: 10px 0 0; }
 .final { text-align: center; padding: 64px 0 40px; }
 .form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
-.form input { width: min(320px, 100%); font: 400 16px var(--sans); padding: 12px 18px; border-radius: 999px; border: 1px solid #CBD2DE; }
+.form input, .form select { width: min(320px, 100%); font: 400 16px var(--sans); padding: 12px 18px; border-radius: 999px; border: 1px solid #CBD2DE; background: #fff; color: var(--ink); }
+.form select { width: auto; appearance: none; padding-right: 34px; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23667' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 14px center; }
+.form .opts { display: flex; gap: 10px; justify-content: center; flex-basis: 100%; flex-wrap: wrap; }
 .msg { font-size: 14px; color: var(--muted); margin-top: 12px; }
 footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
@@ -304,7 +307,13 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--m
     <form class="form" id="form">
       <label for="email" style="position:absolute;left:-9999px">Email</label>
       <input id="email" type="email" required placeholder="you@email.com" autocomplete="email">
-      <button class="btn" type="submit">Request an invite</button>
+      <button class="btn" type="submit" id="send">Request an invite</button>
+      <div class="opts">
+        <label for="role" style="position:absolute;left:-9999px">Mostly for</label>
+        <select id="role"><option value="everyday">For messages and email</option><option value="developer">For writing code too</option></select>
+        <label for="os" style="position:absolute;left:-9999px">Computer</label>
+        <select id="os"><option value="mac">On a Mac</option><option value="windows">On Windows</option></select>
+      </div>
     </form>
     <p class="msg" id="msg">We'll email you an invite code.</p>
   </section>
@@ -345,12 +354,26 @@ function play() {
 }
 play();
 
-document.getElementById("form").addEventListener("submit", (e) => {
+const RELAY = "https://toneos-relay.dashovia.workers.dev";
+document.getElementById("form").addEventListener("submit", async (e) => {
   e.preventDefault();
+  const msg = document.getElementById("msg"), send = document.getElementById("send");
   const email = document.getElementById("email").value.trim();
-  location.href = "mailto:contact@dashovia.app?subject=" + encodeURIComponent("ToneOS beta invite") +
-    "&body=" + encodeURIComponent("Please send me a ToneOS beta invite.\n\nEmail: " + email + "\nI use: Mac / Windows\nI mostly speak: ");
-  document.getElementById("msg").textContent = "Your email app is opening with the request. Send it and we'll reply with a code.";
+  send.disabled = true; send.textContent = "Requesting…";
+  try {
+    const r = await fetch(RELAY + "/v1/waitlist", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email, role: document.getElementById("role").value, os: document.getElementById("os").value }),
+    });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(out.error || "Couldn't add you just now. Try again in a minute.");
+    msg.textContent = out.already ? "You're already on the list. Your invite code will come to " + email + "."
+                                  : "You're on the list. We'll email your invite code to " + email + ".";
+    send.textContent = "Requested";
+  } catch (err) {
+    msg.textContent = err.message === "Failed to fetch" ? "Couldn't reach ToneOS. Check your connection and try again." : err.message;
+    send.disabled = false; send.textContent = "Request an invite";
+  }
 });
 </script>
 </body>
