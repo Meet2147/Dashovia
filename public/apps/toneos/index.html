@@ -369,8 +369,8 @@ document.getElementById("form").addEventListener("submit", async (e) => {
     if (!r.ok) throw new Error(out.error || "Couldn't add you just now. Try again in a minute.");
     msg.textContent = out.emailed ? "Your invite code is on its way to " + email + ". Check your inbox, and your spam folder just in case."
       : out.invited && out.already ? "We sent your code to " + email + " a few minutes ago. Check your inbox and spam folder."
-      : out.invited ? "You're in. Your invite code will reach " + email + " shortly."
-      : out.already ? "You're already on the list. Your invite code will come to " + email + "."
+      : out.invited ? "You're in. We'll email your invite code to " + email + " within a day."
+      : out.already ? "You're already on the list. Your invite code will come to " + email + " within a day."
       : "You're on the list. All 250 beta seats are taken for now; we'll email " + email + " when the next batch opens.";
     send.textContent = "Requested";
   } catch (err) {
