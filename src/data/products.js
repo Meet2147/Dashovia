@@ -219,13 +219,13 @@ export const appProducts = [
     tagline: "Your flat is not a godown.",
     category: "Lifestyle",
     status: "Early access",
-    platforms: ["Web", "iPhone", "Android"],
+    platforms: ["Web", "Android"],
     summary:
       "Drawr is valet storage for your extra stuff. We pick up your boxes, photograph every item, store it safely and deliver anything back next day. Track it all in the app. From ₹299/box a month.",
     highlights: [
       "Every item photographed and searchable, like your own closet",
       "Next-day delivery of a single jacket or a whole box, with a live rider map",
-      "Early access in Mumbai: the first 20 get in; iPhone and Android apps soon",
+      "Early access in Mumbai: the first 20 get in; works on the web, plus an Android app",
     ],
     icon: "/apps/drawr/icon.png",
     poster: "/apps/drawr/poster.webp",
@@ -239,7 +239,6 @@ export const appProducts = [
     ],
     pageUrl: "/apps/drawr/",
     webUrl: "https://drawr.dashovia.app/",
-    appStoreUrl: "https://apps.apple.com/in/app/drawr-wardrobe-storage/id6832271392",
     privacyUrl: "https://drawr.dashovia.app/privacy",
     termsUrl: "https://drawr.dashovia.app/terms",
     supportUrl: "https://drawr.dashovia.app/support",
