@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Download ToneOS for Mac</title>
-<meta name="description" content="Download ToneOS for Mac and set it up in three steps: open your Downloads, drag ToneOS to Applications, sign in with your invite code.">
+<meta name="description" content="Download ToneOS for Mac and set it up in three steps: open your Downloads, drag ToneOS to Applications, type your email.">
 <meta property="og:title" content="Download ToneOS for Mac">
-<meta property="og:description" content="Download ToneOS for Mac and set it up in three steps: open your Downloads, drag ToneOS to Applications, sign in with your invite code.">
+<meta property="og:description" content="Download ToneOS for Mac and set it up in three steps: open your Downloads, drag ToneOS to Applications, type your email.">
 <meta property="og:image" content="https://www.dashovia.com/apps/toneos/icon.png">
 <meta property="og:url" content="https://www.dashovia.com/apps/toneos/download/">
 <link rel="canonical" href="https://www.dashovia.com/apps/toneos/download/">
@@ -96,7 +96,7 @@ body { min-height: 100vh; }
 .set .cardx { background: #fff; border-radius: 14px; padding: 16px; border: 1px solid #E4E8EF; }
 .set .cardx b { display: block; font-size: 14px; margin-bottom: 10px; }
 .set .fld { display: flex; gap: 8px; }
-.set .in { flex: 1; height: 38px; border-radius: 10px; background: #F4F5F8; display: flex; align-items: center; padding: 0 12px; font: 15px var(--mono); }
+.set .in { flex: 1; height: 38px; border-radius: 10px; background: #F4F5F8; display: flex; align-items: center; padding: 0 12px; font: 15px var(--sans); }
 .set .go { height: 38px; padding: 0 16px; border-radius: 999px; background: #0E1116; color: #fff; display: grid; place-items: center; font-size: 14px; font-weight: 600; transition: transform .15s; }
 .set .go.press { transform: scale(.94); }
 .set .ok { display: none; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
@@ -133,17 +133,16 @@ body { min-height: 100vh; }
       <ol class="steps" id="steps">
         <li class="on"><span>Open your Downloads<small>Click ToneOS.dmg once it's downloaded.</small></span></li>
         <li><span>Drag ToneOS to Applications</span></li>
-        <li><span>Open ToneOS and sign in<small>Type the invite code from your email. Then hold right ⌥ and talk.</small></span></li>
+        <li><span>Open ToneOS and type your email<small>Then hold right ⌥ and talk.</small></span></li>
       </ol>
       <div class="retry">
         <span>Download didn't start? <a id="again" href="../ToneOS.dmg" download>Try again</a></span>
-        <span>No invite code yet? <a href="../#invite">Get one free</a></span>
       </div>
     </div>
-    <div class="bottom"><span>macOS 14 or later · Apple silicon and Intel</span><a href="../#invite">Windows: join the waitlist</a></div>
+    <div class="bottom"><span>macOS 14 or later · Apple silicon and Intel</span><a href="../download/windows/">Download for Windows</a></div>
   </div>
 
-  <div class="right" aria-label="How to install ToneOS: open the download, drag ToneOS to Applications, then sign in with your invite code" role="img">
+  <div class="right" aria-label="How to install ToneOS: open the download, drag ToneOS to Applications, then type your email" role="img">
     <div class="stage" id="stage">
       <div class="brw" id="brw">
         <div class="bar"><span class="dots"><i></i><i></i><i></i></span>
@@ -173,7 +172,7 @@ body { min-height: 100vh; }
         <div class="body">
           <p class="t">toneos voice</p>
           <div class="cardx"><b>1 · Sign in</b>
-            <div class="fld"><span class="in" id="code"></span><span class="go" id="go">Sign in</span></div>
+            <div class="fld"><span class="in" id="code"></span><span class="go" id="go">Start</span></div>
             <div class="ok"><i>✓</i>Signed in · 20 of 20 min left today</div>
           </div>
         </div>
@@ -247,7 +246,7 @@ body { min-height: 100vh; }
     // 3 · Open and sign in
     at(8400, () => { step(2); $("fnd").classList.remove("show"); $("brw").style.opacity = 0; $("mb").classList.add("show"); $("set").classList.add("show"); });
     at(9000, () => aim($("code"), 0.3));
-    at(9900, () => { click(); const code = "TONE-ABCD-2345"; [...code].forEach((ch, i) => at(i * 70, () => { $("code").textContent += ch; })); });
+    at(9900, () => { click(); const code = "you@email.com"; [...code].forEach((ch, i) => at(i * 70, () => { $("code").textContent += ch; })); });
     at(11200, () => aim($("go")));
     at(12100, () => { click(); $("go").classList.add("press"); });
     at(12400, () => { $("go").classList.remove("press"); $("set").classList.add("done"); });
