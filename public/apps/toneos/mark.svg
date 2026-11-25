@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><title>ToneOS</title>
+<rect x="8" y="11" width="48" height="44" rx="11" fill="#0E1116"/>
+<rect x="9.5" y="8.5" width="45" height="39" rx="10" fill="#fff" stroke="#0E1116" stroke-width="3.5"/>
+<g fill="#E2A31B"><rect x="18" y="22.5" width="5" height="11" rx="2.5"/><rect x="26" y="17" width="5" height="22" rx="2.5"/><rect x="34" y="20.5" width="5" height="15" rx="2.5"/><rect x="42" y="24.5" width="5" height="7" rx="2.5"/></g>
+</svg>

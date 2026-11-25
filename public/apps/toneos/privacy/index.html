@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy and security | ToneOS</title>
+<meta name="description" content="What ToneOS does with your voice, what it keeps and what it never keeps.">
+<meta property="og:title" content="Privacy and security | ToneOS">
+<meta property="og:description" content="What ToneOS does with your voice, what it keeps and what it never keeps.">
+<meta property="og:image" content="https://www.dashovia.com/apps/toneos/icon.png">
+<meta property="og:url" content="https://www.dashovia.com/apps/toneos/privacy/">
+<link rel="canonical" href="https://www.dashovia.com/apps/toneos/privacy/">
+<link rel="icon" type="image/svg+xml" href="../mark.svg">
+<link rel="icon" type="image/png" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="pill">
+    <a class="logo" href="../" aria-label="ToneOS home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="11" width="48" height="44" rx="11" fill="#0E1116"/><rect x="9.5" y="8.5" width="45" height="39" rx="10" fill="#fff" stroke="#0E1116" stroke-width="3.5"/><g fill="#E2A31B"><rect x="18" y="22.5" width="5" height="11" rx="2.5"/><rect x="26" y="17" width="5" height="22" rx="2.5"/><rect x="34" y="20.5" width="5" height="15" rx="2.5"/><rect x="42" y="24.5" width="5" height="7" rx="2.5"/></g></svg>ToneOS</a>
+    <nav class="links" aria-label="Main">
+      <div class="menu">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Product <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="drop"><a href="../features/dictation/"><b>Dictation Mode</b><span>Talk instead of typing, in your language</span></a><a href="../features/ask/"><b>Ask Mode</b><span>Ask about your bills and documents</span></a><a href="../pricing/"><b>Pricing</b><span>Free while ToneOS is in beta</span></a><a href="../changelog/"><b>What's new</b><span>Every release, newest first</span></a></div>
+      </div>
+      <a href="../about/">About</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="../#invite">Get an invite</a>
+    </nav>
+    <a class="btn sm dl" href="../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <div class="sheet"><a href="../features/dictation/">Dictation Mode<span>Talk instead of typing, in your language</span></a><a href="../features/ask/">Ask Mode<span>Ask about your bills and documents</span></a><a href="../pricing/">Pricing<span>Free while ToneOS is in beta</span></a><a href="../changelog/">What's new<span>Every release, newest first</span></a><hr><a href="../about/">About</a><a href="../privacy/">Privacy</a><a href="../#invite">Get an invite</a>
+      <a class="btn" href="../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download for Mac</a></div>
+  </div>
+</header>
+<main class="narrow prose">
+  <section class="page-hero" style="padding-bottom:8px">
+    <h1>Privacy and security</h1>
+    <p class="lead">Short version: ToneOS listens only while you hold the key, turns your voice into text, and throws the recording away. Last updated 25 November 2026.</p>
+  </section>
+
+  <h2>When ToneOS listens</h2>
+  <ul>
+    <li>Only while you hold right ⌥ (or right ⌥ + Shift). Let go and the microphone stops.</li>
+    <li>A listening pill is on screen the whole time, so you always know.</li>
+  </ul>
+
+  <h2>What happens to your voice</h2>
+  <ul>
+    <li>The recording is sent over an encrypted connection to Sarvam AI, which turns it into text.</li>
+    <li>In the beta, it passes through our server on the way. Our server never saves recordings or the text that comes back.</li>
+    <li>Clips are 30 seconds at most; longer speech is sent in pieces.</li>
+  </ul>
+
+  <h2>What stays on your computer</h2>
+  <ul>
+    <li>Your last 20 dictations, so you can find them again.</li>
+    <li>Your words, names and per-app writing choices.</li>
+    <li>Your sign-in and any Sarvam key you add, in your Mac's Keychain.</li>
+    <li>With Ask Mode, your documents stay with ToneOS Home on your own computer or ToneOS box.</li>
+  </ul>
+
+  <h2>What our server keeps</h2>
+  <ul>
+    <li>Your email, if you asked for an invite.</li>
+    <li>Your invite code and the names of the computers you signed in on.</li>
+    <li>How many seconds you spoke each day, so the free minutes work.</li>
+    <li>Corrections, only if you turn on “share my corrections”. They help train an open speech model for Indian languages. This is off unless you turn it on.</li>
+  </ul>
+
+  <h2>How the app is protected</h2>
+  <ul>
+    <li>The Mac app is signed with our Apple Developer ID and checked by Apple (notarized), so macOS knows it hasn't been changed.</li>
+    <li>It runs with Apple's hardened runtime and asks only for the microphone and Accessibility (to type for you).</li>
+    <li>Sign-in tokens are stored only as one-way hashes on our server.</li>
+  </ul>
+
+  <h2>Questions or a security problem?</h2>
+  <p>Email <a href="mailto:contact@dashovia.app" style="text-decoration:underline">contact@dashovia.app</a>. If you found a security problem, put “security” in the subject line.</p>
+</main>
+
+<footer class="wrap foot">
+  <div class="cols">
+    <div class="about"><a class="logo" href="../" aria-label="ToneOS home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="11" width="48" height="44" rx="11" fill="#0E1116"/><rect x="9.5" y="8.5" width="45" height="39" rx="10" fill="#fff" stroke="#0E1116" stroke-width="3.5"/><g fill="#E2A31B"><rect x="18" y="22.5" width="5" height="11" rx="2.5"/><rect x="26" y="17" width="5" height="22" rx="2.5"/><rect x="34" y="20.5" width="5" height="15" rx="2.5"/><rect x="42" y="24.5" width="5" height="7" rx="2.5"/></g></svg>ToneOS</a><p>Voice typing for the way India speaks. Hold one key, talk in your language, and it types in any app.</p></div>
+    <div><h4>Product</h4><ul>
+      <li><a href="../features/dictation/">Dictation Mode</a></li><li><a href="../features/ask/">Ask Mode</a></li>
+      <li><a href="../pricing/">Pricing</a></li><li><a href="../download/">Download</a></li></ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="../about/">About</a></li><li><a href="mailto:contact@dashovia.app">Contact</a></li>
+      <li><a href="https://www.dashovia.com/">Dashovia</a></li></ul></div>
+    <div><h4>Resources</h4><ul>
+      <li><a href="../changelog/">What's new</a></li><li><a href="../#faq">Questions</a></li>
+      <li><a href="../#languages">Languages</a></li></ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="../privacy/">Privacy and security</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">toneos</div>
+  <div class="base"><span>© 2026 Dashovia. Made in India.</span><span>Speech by Sarvam AI</span></div>
+</footer>
+<script src="../site.js"></script>
+</body>
+</html>

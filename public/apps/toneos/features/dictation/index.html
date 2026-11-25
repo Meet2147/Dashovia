@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dictation Mode | ToneOS</title>
+<meta name="description" content="Hold right Option and talk in Hinglish, Hindi or any of 22 Indian languages. ToneOS types it in any Mac app, written the way that app needs.">
+<meta property="og:title" content="Dictation Mode | ToneOS">
+<meta property="og:description" content="Hold right Option and talk in Hinglish, Hindi or any of 22 Indian languages. ToneOS types it in any Mac app, written the way that app needs.">
+<meta property="og:image" content="https://www.dashovia.com/apps/toneos/icon.png">
+<meta property="og:url" content="https://www.dashovia.com/apps/toneos/features/dictation/">
+<link rel="canonical" href="https://www.dashovia.com/apps/toneos/features/dictation/">
+<link rel="icon" type="image/svg+xml" href="../../mark.svg">
+<link rel="icon" type="image/png" href="../../icon.png">
+<link rel="apple-touch-icon" href="../../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="pill">
+    <a class="logo" href="../../" aria-label="ToneOS home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="11" width="48" height="44" rx="11" fill="#0E1116"/><rect x="9.5" y="8.5" width="45" height="39" rx="10" fill="#fff" stroke="#0E1116" stroke-width="3.5"/><g fill="#E2A31B"><rect x="18" y="22.5" width="5" height="11" rx="2.5"/><rect x="26" y="17" width="5" height="22" rx="2.5"/><rect x="34" y="20.5" width="5" height="15" rx="2.5"/><rect x="42" y="24.5" width="5" height="7" rx="2.5"/></g></svg>ToneOS</a>
+    <nav class="links" aria-label="Main">
+      <div class="menu">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Product <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="drop"><a href="../../features/dictation/"><b>Dictation Mode</b><span>Talk instead of typing, in your language</span></a><a href="../../features/ask/"><b>Ask Mode</b><span>Ask about your bills and documents</span></a><a href="../../pricing/"><b>Pricing</b><span>Free while ToneOS is in beta</span></a><a href="../../changelog/"><b>What's new</b><span>Every release, newest first</span></a></div>
+      </div>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy</a>
+      <a href="../../#invite">Get an invite</a>
+    </nav>
+    <a class="btn sm dl" href="../../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <div class="sheet"><a href="../../features/dictation/">Dictation Mode<span>Talk instead of typing, in your language</span></a><a href="../../features/ask/">Ask Mode<span>Ask about your bills and documents</span></a><a href="../../pricing/">Pricing<span>Free while ToneOS is in beta</span></a><a href="../../changelog/">What's new<span>Every release, newest first</span></a><hr><a href="../../about/">About</a><a href="../../privacy/">Privacy</a><a href="../../#invite">Get an invite</a>
+      <a class="btn" href="../../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download for Mac</a></div>
+  </div>
+</header>
+<style>
+.race { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+.lane { border-radius: 28px; padding: 26px; min-height: 250px; display: flex; flex-direction: column; }
+.lane.kb { background: var(--soft); } .lane.us { background: var(--ink); color: #fff; }
+.lane header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+.lane header b { font-size: 17px; } .lane header span { font: 600 32px var(--sans); letter-spacing: -0.03em; }
+.lane header span small { font-size: 14px; font-weight: 500; opacity: .7; margin-left: 4px; }
+.lane .out { font-size: 17px; line-height: 1.55; flex: 1; }
+.lane.us .out { font-family: var(--deva); font-size: 18px; }
+.lane .out .typo { background: #FBD9D3; border-radius: 4px; }
+.lane .out .cur { display: inline-block; width: 2px; height: 1.1em; background: currentColor; vertical-align: -0.2em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.messy { display: grid; gap: 14px; max-width: 760px; margin: 36px auto 0; text-align: left; }
+.messy .card { font-size: 17px; }
+.messy .raw { color: var(--muted); }
+.messy .raw s { text-decoration-thickness: 2px; text-decoration-color: #E06B57; }
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+.appcard { border-radius: 24px; background: var(--soft); padding: 20px; }
+.appcard .h { display: flex; gap: 10px; align-items: center; font-weight: 600; margin-bottom: 14px; font-size: 15px; }
+.appcard .h i { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-style: normal; color: #fff; font-size: 14px; }
+.appcard .bubble { background: #fff; border-radius: 14px; padding: 12px 14px; font-size: 15.5px; box-shadow: 0 6px 18px rgba(14,17,22,0.06); }
+.appcard .style { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.spell { max-width: 680px; margin: 36px auto 0; display: grid; gap: 12px; text-align: left; }
+.spell .card { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+.spell s { color: #B54A39; text-decoration-thickness: 2px; }
+.spell b { color: var(--green); }
+@media (max-width: 900px) { .race, .three { grid-template-columns: 1fr; } }
+</style>
+<main class="wrap">
+  <section class="page-hero center">
+    <span class="key" style="font-size:16px">right ⌥</span>
+    <h1 style="margin-top:22px">Talk instead of typing.<br>In your language.</h1>
+    <p class="lead">Hold the key, say it the way you'd say it to a friend, let go. ToneOS types it where your cursor is, in WhatsApp, Gmail, Slack, Notion or your code editor.</p>
+    <div class="ctas"><a class="btn lg" href="../../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download for Mac</a></div>
+  </section>
+
+  <section>
+    <div class="race" id="race">
+      <div class="lane kb"><header><b>Typing Hindi on a keyboard</b><span>15<small>wpm</small></span></header>
+        <div class="out" id="kb"></div></div>
+      <div class="lane us"><header><b>Speaking with ToneOS</b><span>150<small>wpm</small></span></header>
+        <div class="out" id="us"></div></div>
+    </div>
+    <p class="note center">Typical words per minute. Most of us type Hindi in English letters because the keyboard makes the real script so slow.</p>
+  </section>
+
+  <section class="center" style="padding-top:88px">
+    <h2>Say it messy. It lands clean.</h2>
+    <p class="lead">Ums, repeats and false starts are taken out. What you meant stays.</p>
+    <div class="messy">
+      <div class="card raw"><small>What you said</small><s>umm</s> so the client call is, <s>is</s> moved to <s>uh</s> Thursday, <s>no wait</s> Friday 4 pm, <s>so</s> please update the deck</div>
+      <div class="card"><small>What ToneOS types</small>The client call is moved to Friday 4 pm, please update the deck.</div>
+    </div>
+  </section>
+
+  <section class="center" style="padding-top:88px">
+    <h2>It writes to fit where it lands.</h2>
+    <p class="lead">Same words, said once. Each app gets the version it needs, and you can change any app from the menu bar.</p>
+    <div class="three" style="text-align:left">
+      <div class="appcard"><div class="h"><i style="background:#25D366">W</i>WhatsApp</div><div class="bubble hi">कल meeting 10 बजे है, सब को बता देना</div><div class="style">As you said it: Hinglish, in the right scripts</div></div>
+      <div class="appcard"><div class="h"><i style="background:#EA4335">M</i>Gmail</div><div class="bubble">The meeting is tomorrow at 10 am. Please let everyone know.</div><div class="style">In English</div></div>
+      <div class="appcard"><div class="h"><i style="background:#0E1116">N</i>Notes</div><div class="bubble">Kal meeting 10 baje hai, sab ko bata dena.</div><div class="style">In Roman letters</div></div>
+    </div>
+  </section>
+
+  <section class="center" style="padding-top:88px">
+    <h2>It spells them your way.</h2>
+    <p class="lead">Add the names and words you use, once. ToneOS listens for them and writes them exactly.</p>
+    <div class="spell">
+      <div class="card"><span>“Bhavesh bhai ko call karo”</span><span><s>Bavesh bhai</s> → <b>Bhavesh bhai</b></span></div>
+      <div class="card"><span>“Thyronorm fifty”</span><span><s>thyro norm 50</s> → <b>Thyronorm 50</b></span></div>
+      <div class="card"><span>“parse medicine function”</span><span><s>parse medicine</s> → <b><code>parse_medicine</code></b></span></div>
+    </div>
+  </section>
+
+  <section class="row flip" style="padding-top:88px">
+    <div class="art" style="background:var(--soft2)">
+      <div class="editor"><span class="c"># you said: "make parse medicine skip SOS doses"</span><br>
+<span class="k">def</span> <span class="f">parse_medicine</span>(line):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;med = _match(line)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="new"><span class="k">if</span> med.sos: <span class="k">return</span> <span class="k">None</span></span></div>
+      <span class="tag">Reads the project you have open</span>
+    </div>
+    <div>
+      <h2>Talk to your code</h2>
+      <p class="lead">In VS Code, Cursor or the terminal, ToneOS picks up the names in your open project, so function and file names come out exactly. Tell Claude Code or Cursor what to build, out loud.</p>
+    </div>
+  </section>
+
+  <section class="center" id="languages" style="padding-top:72px">
+    <h2>Speak the language.</h2>
+    <p class="lead">22 Indian languages, and English in between. Speech recognition by Sarvam AI, trained on Indian voices.</p>
+    <div class="chips">
+      <span class="hi">हिन्दी</span><span>ગુજરાતી</span><span class="hi">मराठी</span><span>தமிழ்</span><span>తెలుగు</span><span>ಕನ್ನಡ</span><span>മലയാളം</span>
+      <span>বাংলা</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>অসমীয়া</span><span>اردو</span><span>Hinglish</span><span>English</span>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const US = "कल client को बोल देना कि report Friday तक भेज देंगे, और payment का reminder भी डाल देना।";
+  const KB = "kal client ko bol dena ki report friday tak bhej";
+  const us = document.getElementById("us"), kb = document.getElementById("kb");
+  if (still) { us.textContent = US; kb.textContent = KB; return; }
+  // keyboard: types slowly, makes a typo, backs it out, carries on
+  const frames = [];
+  const typeOn = (base, add) => { for (const ch of add) { base += ch; frames.push(base); } return base; };
+  let k = typeOn("", "kal cleint");
+  frames.push(k, k, k);
+  for (let n = 0; n < 4; n++) { k = k.slice(0, -1); frames.push(k); }
+  typeOn(k, "ient ko bol dena ki report friday tak bhej");
+  function run() {
+    let i = 0, f = 0;
+    const chars = [...US];
+    const t = setInterval(() => {
+      i += 2;
+      us.innerHTML = chars.slice(0, i).join("") + '<span class="cur"></span>';
+      if (i >= chars.length) { clearInterval(t); us.textContent = US; }
+    }, 45);
+    const kt = setInterval(() => {
+      const s = frames[f++] || frames[frames.length - 1];
+      kb.innerHTML = s.replace("cleint", '<span class="typo">cleint</span>') + '<span class="cur"></span>';
+      if (f >= frames.length) clearInterval(kt);
+    }, 200);
+    setTimeout(() => { clearInterval(t); clearInterval(kt); run(); }, 14000);
+  }
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); run(); } }).observe(document.getElementById("race"));
+})();
+</script>
+
+<section class="wrap"><div class="band">
+  <h2>Hold <span class="key">right ⌥</span> and start speaking.</h2>
+  <p>Let your voice do the typing.</p>
+  <div class="ctas"><a class="btn lg white" href="../../download/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Download for Mac</a></div>
+</div></section>
+<footer class="wrap foot">
+  <div class="cols">
+    <div class="about"><a class="logo" href="../../" aria-label="ToneOS home"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="11" width="48" height="44" rx="11" fill="#0E1116"/><rect x="9.5" y="8.5" width="45" height="39" rx="10" fill="#fff" stroke="#0E1116" stroke-width="3.5"/><g fill="#E2A31B"><rect x="18" y="22.5" width="5" height="11" rx="2.5"/><rect x="26" y="17" width="5" height="22" rx="2.5"/><rect x="34" y="20.5" width="5" height="15" rx="2.5"/><rect x="42" y="24.5" width="5" height="7" rx="2.5"/></g></svg>ToneOS</a><p>Voice typing for the way India speaks. Hold one key, talk in your language, and it types in any app.</p></div>
+    <div><h4>Product</h4><ul>
+      <li><a href="../../features/dictation/">Dictation Mode</a></li><li><a href="../../features/ask/">Ask Mode</a></li>
+      <li><a href="../../pricing/">Pricing</a></li><li><a href="../../download/">Download</a></li></ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="../../about/">About</a></li><li><a href="mailto:contact@dashovia.app">Contact</a></li>
+      <li><a href="https://www.dashovia.com/">Dashovia</a></li></ul></div>
+    <div><h4>Resources</h4><ul>
+      <li><a href="../../changelog/">What's new</a></li><li><a href="../../#faq">Questions</a></li>
+      <li><a href="../../#languages">Languages</a></li></ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="../../privacy/">Privacy and security</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">toneos</div>
+  <div class="base"><span>© 2026 Dashovia. Made in India.</span><span>Speech by Sarvam AI</span></div>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>
