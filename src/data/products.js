@@ -194,7 +194,7 @@ export const appProducts = [
     tagline: "Speak the way you speak.",
     category: "Productivity",
     status: "Free beta",
-    platforms: ["Mac", "Windows (soon)"],
+    platforms: ["Mac", "Windows"],
     summary:
       "Hold one key and speak Hinglish, Hindi, Gujarati or any of 22 Indian languages. ToneOS types it the right way into any app: WhatsApp, Gmail, Slack or your code editor. Hold Shift too and ask it things, like which bills are pending.",
     highlights: [
