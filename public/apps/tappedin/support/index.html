@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapped In — Support</title>
+<link rel="icon" type="image/png" href="/apps/tappedin/icon.png">
+<meta name="description" content="Help with Tapped In, the NFC sticker app that remembers where you left your stuff.">
+<style>
+  :root { --bg:#EEF1F7; --ink:#1B1E3C; --ink-2:#2E3254; --ink-3:#5E6285; --accent:#7C5CFF; --butter:#FFE45C; --line:rgba(27,30,60,.14); color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
+  h1, h2, h3 { font-family: "SF Pro Display", -apple-system, "Arial Narrow", sans-serif; font-weight:900; line-height:1.1; letter-spacing:-0.02em; }
+  h1 { font-size:44px; margin:0 0 6px; text-transform:uppercase; font-stretch:condensed; }
+  h2 { font-size:22px; margin:40px 0 10px; color:var(--accent); text-transform:uppercase; }
+  h3 { font-size:18px; margin:26px 0 6px; }
+  p, li { color:var(--ink-2); }
+  ul { padding-left:22px; } li { margin:6px 0; }
+  strong { color:var(--ink); }
+  .meta { color:var(--ink-3); font-size:15px; margin:0 0 28px; }
+  .summary { background:#fff; border:3px solid var(--ink); box-shadow:6px 6px 0 var(--ink); border-radius:18px; padding:20px 22px; margin:0 0 8px; }
+  .summary p { margin:0; }
+  a { color:var(--accent); }
+  .back { display:inline-block; margin:0 0 28px; font-size:15px; text-decoration:none; }
+  .brand { display:flex; align-items:center; gap:14px; margin:0 0 18px; }
+  .brand img { width:56px; height:56px; border-radius:13px; border:2px solid var(--ink); }
+  .brand span { font-weight:900; font-size:20px; text-transform:uppercase; }
+  footer { margin-top:56px; color:var(--ink-3); font-size:14px; border-top:1px solid var(--line); padding-top:18px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/#apps">← All Dashovia apps</a>
+  <div class="brand"><img src="/apps/tappedin/icon.png" alt=""><span>Tapped In</span></div>
+  <h1>Support</h1>
+  <p class="meta">Tapped In for iPhone</p>
+
+  <div class="summary">
+    <p><strong>Need help?</strong> Email <a href="mailto:contact@dashovia.app">contact@dashovia.app</a> with your iPhone model, iOS version and what happened. We usually reply within a day or two.</p>
+  </div>
+
+  <h2>Questions</h2>
+  <h3>Which stickers do I need?</h3>
+  <p>Any <strong>NTAG213</strong> or <strong>NTAG215</strong> NFC sticker works. For keys or anything metal, use an <strong>anti-metal</strong> sticker, because normal stickers don't read on bare metal. Avoid "MIFARE Classic" tags; iPhones can't write to them. The sticker guide in the app (bag icon) links to a pack that works.</p>
+  <h3>How do I link a sticker?</h3>
+  <p>Add a thing with <strong>+</strong>, keep <strong>link a sticker now</strong> on, and hold the top of your iPhone (near the camera) against the sticker until it buzzes. You can also open a thing and tap <strong>re-link sticker</strong>.</p>
+  <h3>The phone won't read the sticker</h3>
+  <ul>
+    <li>Touch the sticker with the <strong>top edge</strong> of the iPhone, not the middle. Small stickers need to be almost touching.</li>
+    <li>Take the phone out of thick or metal cases.</li>
+    <li>On metal (keys, belt buckle), use an anti-metal sticker.</li>
+    <li>If it says the sticker is read-only, it was locked by the seller. Use a fresh one.</li>
+  </ul>
+  <h3>Does it work on iPad?</h3>
+  <p>No. iPads don't have NFC, so Tapped In is iPhone-only (iPhone 7 or newer).</p>
+  <h3>Can it track my stuff live like an AirTag?</h3>
+  <p>No. NFC stickers have no battery and don't send any signal. Tapped In remembers where you <strong>last tapped</strong> each thing. For live tracking, put an AirTag on it and use Apple's Find My.</p>
+  <h3>Why is the map pin on my building and not my room?</h3>
+  <p>GPS is accurate to about 5–20 metres, so indoors every pin lands on your building. That's why you also pick a spot like "key bowl". The map helps most when you leave something outside home.</p>
+  <h3>There's no map pin on my check-in</h3>
+  <p>Check iPhone Settings › Tapped In › Location is set to <strong>While Using the App</strong>. Deep inside buildings the phone may also take a while to find you.</p>
+  <h3>Is my data private?</h3>
+  <p>Yes. There's no account and no server. Everything stays on your iPhone. See the <a href="/apps/tappedin/privacy/">privacy policy</a>.</p>
+
+  <footer>Tapped In · Support · <a href="/apps/tappedin/privacy/">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></footer>
+</main>
+</body>
+</html>
