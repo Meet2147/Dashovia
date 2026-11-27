@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you — OneInbox</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/apps/oneinbox/icon.png">
+<style>
+  :root { --bg:#FBFBFD; --ink:#1D1D1F; --ink-2:#424245; --ink-3:#6E6E73; --line:#E5E5EA; --accent:#0071E3; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#000; --ink:#F5F5F7; --ink-2:#C7C7CC; --ink-3:#8E8E93; --line:#2C2C2E; --accent:#2997FF; } }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:720px; margin:0 auto; padding:48px 22px 72px; }
+  a { color:var(--accent); }
+  .back { display:inline-flex; align-items:center; gap:8px; font-size:15px; text-decoration:none; color:var(--ink-3); }
+  .back img { width:22px; height:22px; border-radius:5px; }
+  h1 { font-size:40px; letter-spacing:-0.03em; line-height:1.1; margin:28px 0 6px; }
+  h2 { font-size:21px; letter-spacing:-0.01em; margin:34px 0 8px; }
+  p, li { color:var(--ink-2); }
+  .updated { color:var(--ink-3); font-size:14px; margin:0 0 24px; }
+  footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:16px; }
+  footer a { color:var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/apps/oneinbox/"><img src="/apps/oneinbox/icon.png" alt="">OneInbox</a>
+<h1 id="title">Thank you!</h1>
+<p class="updated" id="sub">Your order is being processed.</p>
+<p id="body">Check your email for a message from Dodo Payments with your download link. It usually arrives within a minute. If you can't find it, check your spam folder or email <a href="mailto:contact@dashovia.app">contact@dashovia.app</a>.</p>
+
+<h2>Getting started</h2>
+<ol>
+  <li>Open the downloaded <strong>OneInbox.dmg</strong> and drag OneInbox into Applications.</li>
+  <li>Open OneInbox and pick an app in the sidebar to sign in.</li>
+  <li>For iMessage, follow the in-app steps to allow Full Disk Access.</li>
+</ol>
+<footer>
+  <span>© 2026 Dashovia</span>
+  <a href="/apps/oneinbox/terms/">Terms</a>
+  <a href="/apps/oneinbox/privacy/">Privacy</a>
+  <a href="/apps/oneinbox/refunds/">Refunds</a>
+  <a href="mailto:contact@dashovia.app">contact@dashovia.app</a>
+</footer>
+</div>
+<script>
+  // Dodo appends ?status=… to the redirect. Only a fixed set of values changes the copy;
+  // nothing from the URL is ever written into the page.
+  (function () {
+    var status = new URLSearchParams(location.search).get("status");
+    if (status && status !== "succeeded") {
+      document.getElementById("title").textContent = "Payment not completed";
+      document.getElementById("sub").textContent = "Your payment didn't go through, and you haven't been charged.";
+      document.getElementById("body").textContent = "You can try again from the OneInbox page, or email contact@dashovia.app if something looks wrong.";
+    } else if (status === "succeeded") {
+      document.getElementById("sub").textContent = "Payment received. Welcome to OneInbox.";
+    }
+  })();
+</script>
+</body>
+</html>
