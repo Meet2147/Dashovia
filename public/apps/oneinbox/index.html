@@ -81,10 +81,20 @@
   .list li:first-child { border-top:0; }
   .list b { color:var(--ink); font-weight:600; }
 
-  .price { max-width:460px; margin:40px auto 0; background:var(--card); border:1px solid var(--line); border-radius:22px; padding:34px 30px; text-align:left; }
+  .plans { display:grid; gap:20px; max-width:880px; margin:40px auto 0; }
+  @media (min-width: 760px) { .plans { grid-template-columns:1fr 1fr; } }
+  .price { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:30px 28px; text-align:left; display:flex; flex-direction:column; }
+  .price.pro { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+  .price .btn { margin-top:auto; }
+  .plan-name { font-weight:600; color:var(--ink-2); margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .tag { font-size:12px; font-weight:600; color:var(--accent); border:1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius:999px; padding:2px 8px; }
+  .toggle { display:inline-flex; gap:4px; background:var(--soft); border-radius:999px; padding:3px; margin-top:12px; }
+  .toggle button { border:0; background:transparent; color:var(--ink-2); font:inherit; font-size:13px; font-weight:500; padding:6px 12px; border-radius:999px; cursor:pointer; }
+  .toggle button[aria-checked="true"] { background:var(--card); color:var(--ink); box-shadow:0 1px 3px rgba(0,0,0,.12); }
+  .toggle button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   .price .amount { font-size:56px; font-weight:700; letter-spacing:-0.03em; }
   .price .amount small { font-size:18px; font-weight:500; color:var(--ink-3); letter-spacing:0; }
-  .price ul { list-style:none; padding:0; margin:20px 0 26px; }
+  .price ul { list-style:none; padding:0; margin:18px 0 26px; }
   .price li { padding:7px 0 7px 26px; position:relative; color:var(--ink-2); }
   .price li::before { content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:600; }
   .price .btn { width:100%; }
@@ -113,7 +123,7 @@
     <span class="spacer"></span>
     <a class="link" href="#features">Features</a>
     <a class="link" href="#pricing">Pricing</a>
-    <a class="btn btn-sm buy" href="#pricing">Buy — $19</a>
+    <a class="btn btn-sm" href="#pricing">Buy — $19</a>
   </div>
 </nav>
 
@@ -124,7 +134,7 @@
       <h1>Every message. One quiet place.</h1>
       <p class="lede">OneInbox brings iMessage, WhatsApp, Slack and the rest of your chats into one calm, native Mac app. Stop checking seven apps. Check one.</p>
       <div class="cta">
-        <a class="btn buy" href="#pricing">Get early access — $19</a>
+        <a class="btn" href="#pricing">Get early access — $19</a>
         <a class="btn ghost" href="#features">See how it works ›</a>
       </div>
       <p class="faint cta-note">One-time payment. Goes up to $29 at version 1.0.</p>
@@ -152,6 +162,7 @@
         <div class="card"><h3>Never miss a thing</h3><p>One badge, one menu bar icon, one set of notifications. Jump between apps with ⌘1 to ⌘7.</p></div>
         <div class="card"><h3>Private by design</h3><p>No OneInbox servers and no accounts. Your messages go straight between your Mac and each service.</p></div>
         <div class="card"><h3>Locked down</h3><p>Keys stay in your Mac's Keychain. Telegram data is encrypted on disk. Pages that leave a service are clearly flagged.</p></div>
+        <div class="card"><h3>Every account you run</h3><p>With Pro, add a second WhatsApp, every client's Slack or all your Instagram accounts. Each stays signed in on its own.</p></div>
         <div class="card"><h3>Signed by Apple</h3><p>Signed with a Developer ID and notarized by Apple, so it opens like any app you trust.</p></div>
       </div>
     </div>
@@ -176,20 +187,38 @@
 
   <section id="pricing">
     <div class="wrap center">
-      <h2>Early access.</h2>
-      <p class="lede">Get in now at the early-bird price and keep every 1.x update.</p>
-      <div class="price">
-        <div class="amount">$19 <small>one-time</small></div>
-        <p class="faint">Price rises to $29 at version 1.0.</p>
-        <ul>
-          <li>OneInbox for Mac, signed and notarized</li>
-          <li>All seven apps, plus every 1.x update</li>
-          <li>Download link emailed right after purchase</li>
-          <li>14-day no-questions refund</li>
-        </ul>
-        <a class="btn buy" id="buy" href="#pricing">Buy OneInbox — $19</a>
-        <p class="faint" style="margin-top:12px;text-align:center">Secure checkout by Dodo Payments. Taxes calculated at checkout.</p>
+      <h2>Pick your plan.</h2>
+      <p class="lede">Buy once and keep it, or go Pro for every account you run.</p>
+      <div class="plans">
+        <div class="price">
+          <p class="plan-name">Early access</p>
+          <div class="amount">$19 <small>one-time</small></div>
+          <p class="faint">Price rises to $29 at version 1.0.</p>
+          <ul>
+            <li>All seven apps in one native Mac app</li>
+            <li><b>2 accounts per app, for life</b> — early-bird bonus</li>
+            <li>Every 1.x update</li>
+            <li>14-day no-questions refund</li>
+          </ul>
+          <a class="btn buy" data-plan="early" href="#pricing">Buy for $19</a>
+        </div>
+        <div class="price pro">
+          <p class="plan-name">Pro <span class="tag">Best for creators &amp; teams</span></p>
+          <div class="amount"><span id="pro-price">$39</span> <small id="pro-period">/ year</small></div>
+          <div class="toggle" role="radiogroup" aria-label="Billing period">
+            <button type="button" role="radio" aria-checked="true" data-period="yearly">Yearly · save 35%</button>
+            <button type="button" role="radio" aria-checked="false" data-period="monthly">Monthly</button>
+          </div>
+          <ul>
+            <li>Everything in Early access</li>
+            <li><b>Unlimited accounts per app</b> — work and personal WhatsApp, every client's Slack, all your Instagrams</li>
+            <li>Each account signed in on its own, labelled in your inbox and notifications</li>
+            <li>Cancel any time</li>
+          </ul>
+          <a class="btn buy" data-plan="pro-yearly" id="buy-pro" href="#pricing">Get Pro</a>
+        </div>
       </div>
+      <p class="faint" style="margin-top:18px">Secure checkout by Dodo Payments. Taxes calculated at checkout. The download link and license key arrive by email.</p>
     </div>
   </section>
 
@@ -202,6 +231,8 @@
         <details><summary>How does iMessage work?</summary><p>OneInbox reads your Messages history on your Mac and sends replies through the Messages app. macOS asks you once to allow Full Disk Access. Nothing is uploaded anywhere.</p></details>
         <details><summary>How do WhatsApp, Instagram, Messenger and Discord work?</summary><p>OneInbox runs each service's official web app inside its own tab and collects new-message notifications into your inbox. You sign in once, the same way you would in a browser.</p></details>
         <details><summary>Is there any setup for Telegram or Slack?</summary><p>Only if you want them native. They work as web apps out of the box. For native chats, Telegram needs a free API key from Telegram, and Slack needs a small private Slack app. OneInbox walks you through each step.</p></details>
+        <details><summary>Can I use more than one WhatsApp, Instagram or Slack account?</summary><p>Yes. Early-access buyers get 2 accounts per app for life. Pro unlocks unlimited accounts per app. Every account is signed in separately, so they never mix.</p></details>
+        <details><summary>What happens if I cancel Pro?</summary><p>You keep OneInbox. Accounts beyond your plan pause and keep their sign-in, so they pick up where they left off if you come back.</p></details>
         <details><summary>Is there an iPhone version?</summary><p>Not right now. OneInbox is made for the Mac.</p></details>
         <details><summary>Can I get a refund?</summary><p>Yes. Email us within 14 days of purchase and we'll refund you in full. See the <a href="/apps/oneinbox/refunds/">refund policy</a>.</p></details>
       </div>
@@ -238,13 +269,35 @@
   })();
 </script>
 <script>
-  // Dodo Payments checkout. Set PRODUCT_ID to the live product ID from the Dodo dashboard.
+  // Dodo Payments checkout. Paste each live product ID from the Dodo dashboard.
   (function () {
-    var PRODUCT_ID = "";
-    if (!PRODUCT_ID) return; // buttons scroll to pricing until checkout is live
-    var url = "https://checkout.dodopayments.com/buy/" + encodeURIComponent(PRODUCT_ID) +
-      "?quantity=1&redirect_url=" + encodeURIComponent("https://www.dashovia.com/apps/oneinbox/thanks/");
-    document.querySelectorAll("a.buy").forEach(function (a) { a.href = url; a.rel = "noopener"; });
+    var PRODUCTS = { "early": "", "pro-monthly": "", "pro-yearly": "" };
+    var back = "https://www.dashovia.com/apps/oneinbox/thanks/";
+    function link(plan) {
+      var id = PRODUCTS[plan];
+      return id ? "https://checkout.dodopayments.com/buy/" + encodeURIComponent(id) +
+        "?quantity=1&redirect_url=" + encodeURIComponent(back) : "#pricing";
+    }
+    function wire() {
+      document.querySelectorAll("a.buy[data-plan]").forEach(function (a) {
+        a.href = link(a.getAttribute("data-plan"));
+        if (a.href.indexOf("checkout.") > -1) a.rel = "noopener";
+      });
+    }
+    // Pro billing toggle
+    var price = document.getElementById("pro-price"), period = document.getElementById("pro-period");
+    var pro = document.getElementById("buy-pro");
+    document.querySelectorAll(".toggle button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var yearly = button.getAttribute("data-period") === "yearly";
+        document.querySelectorAll(".toggle button").forEach(function (b) { b.setAttribute("aria-checked", String(b === button)); });
+        price.textContent = yearly ? "$39" : "$5";
+        period.textContent = yearly ? "/ year" : "/ month";
+        pro.setAttribute("data-plan", yearly ? "pro-yearly" : "pro-monthly");
+        wire();
+      });
+    });
+    wire();
   })();
 </script>
 </body>
