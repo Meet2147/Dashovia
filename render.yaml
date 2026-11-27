@@ -9,3 +9,23 @@ services:
       - path: /.well-known/apple-app-site-association
         name: Content-Type
         value: application/json
+      # OneInbox pages: security headers (inline script/style and same-origin video are allowed;
+      # checkout is a plain link to checkout.dodopayments.com, which CSP does not restrict).
+      - path: /apps/oneinbox/*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+      - path: /apps/oneinbox/*
+        name: X-Frame-Options
+        value: DENY
+      - path: /apps/oneinbox/*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /apps/oneinbox/thanks/*
+        name: Referrer-Policy
+        value: no-referrer
+      - path: /apps/oneinbox/*
+        name: Permissions-Policy
+        value: "camera=(), microphone=(), geolocation=(), payment=()"
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000
