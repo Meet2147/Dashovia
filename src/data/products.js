@@ -746,6 +746,8 @@ export const appProducts = [
       "Widgets, Live Activity focus timer, Siri and Apple Reminders import",
       "Private by design: no accounts, no servers, synced through your iCloud",
     ],
+    video: "/apps/sortd/preview.mp4",
+    poster: "/apps/sortd/poster.webp",
     icon: "/apps/sortd/icon.png",
     appStoreUrl: "https://apps.apple.com/app/sortd-eisenhower-matrix/id6837717403",
     privacyUrl: "/apps/sortd/privacy/",
