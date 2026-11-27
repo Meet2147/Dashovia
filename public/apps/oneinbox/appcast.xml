@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>OneInbox</title>
+    <link>https://www.dashovia.com/apps/oneinbox/</link>
+    <language>en</language>
+    <item>
+      <title>OneInbox 0.1.0</title>
+      <pubDate>Fri, 27 Nov 2026 18:14:06 GMT</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>First public release: free 3-day trial, automatic updates, and encrypted local storage.</p>]]></description>
+      <enclosure url="https://github.com/Meet2147/Dashovia/releases/download/oneinbox-v0.1.0-b2/OneInbox-0.1.0.dmg" sparkle:edSignature="I4GDNn/HEuw0l/8sakW+MtdxzIVYagjvuz/ziS1zduyN2TO1yXTFAe6iZQnc/lldnRnRhwJKEEmI/OKOSUqsDg==" length="43282583" type="application/octet-stream"/>
+    </item>
+  </channel>
+</rss>

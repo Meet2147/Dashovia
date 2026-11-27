@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thank you — OneInbox</title>
 <meta name="robots" content="noindex">
@@ -21,6 +23,7 @@
   footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:16px; }
   footer a { color:var(--ink-3); }
 </style>
+<script>if (window.top !== window.self) { window.top.location = window.self.location; }</script>
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +32,10 @@
 <p class="updated" id="sub">Your order is being processed.</p>
 <p id="body">Check your email for a message from Dodo Payments with your download link. It usually arrives within a minute. If you can't find it, check your spam folder or email <a href="mailto:contact@dashovia.app">contact@dashovia.app</a>.</p>
 
-<h2>Getting started</h2>
+<h2>Already using the free trial?</h2>
+<p>Just open OneInbox → Settings → License and paste the key from your email. Everything you set up stays as it is.</p>
+
+<h2>New to OneInbox?</h2>
 <ol>
   <li>Open the downloaded <strong>OneInbox.dmg</strong> and drag OneInbox into Applications.</li>
   <li>Open OneInbox and pick an app in the sidebar to sign in.</li>

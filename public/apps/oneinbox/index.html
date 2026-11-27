@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OneInbox — Every message. One quiet place. For Mac.</title>
 <meta name="description" content="OneInbox brings iMessage, WhatsApp, Instagram, Messenger, Telegram, Slack and Discord into one calm, native Mac app. Early access: $19 one-time.">
@@ -167,6 +169,7 @@
   footer .grow { flex:1; }
   .legal { margin-top:14px; font-size:12px; color:var(--ink-3); flex-basis:100%; }
 </style>
+<script>if (window.top !== window.self) { window.top.location = window.self.location; }</script>
 </head>
 <body id="top">
 
@@ -176,21 +179,21 @@
     <span class="spacer"></span>
     <a class="link" href="#features">Features</a>
     <a class="link" href="#pricing">Pricing</a>
-    <a class="btn btn-sm" href="#pricing">Buy — $19</a>
+    <a class="btn btn-sm download" href="/apps/oneinbox/download/">Download</a>
   </div>
 </nav>
 
 <main>
   <header class="hero">
     <div class="wrap">
-      <span class="pill">Early access · macOS 15 or later</span>
+      <span class="pill">Free 3-day trial · macOS 15 or later</span>
       <h1>Every message. One quiet place.</h1>
       <p class="lede">OneInbox brings iMessage, WhatsApp, Slack and the rest of your chats into one calm, native Mac app. Stop checking seven apps. Check one.</p>
       <div class="cta">
-        <a class="btn" href="#pricing">Get early access — $19</a>
-        <a class="btn ghost" href="#features">See how it works ›</a>
+        <a class="btn download" href="/apps/oneinbox/download/">Download free</a>
+        <a class="btn ghost" href="#pricing">Buy — from $19 ›</a>
       </div>
-      <p class="faint cta-note">One-time payment. Goes up to $29 at version 1.0.</p>
+      <p class="faint cta-note">Everything unlocked for 3 days. Then $19 one-time, or Pro at $39 a year.</p>
       <div class="apps" aria-label="Supported apps">
         <span>iMessage</span><span>WhatsApp</span><span>Instagram</span>
         <span>Messenger</span><span>Telegram</span><span>Slack</span><span>Discord</span>
@@ -308,8 +311,9 @@
 
   <section id="pricing">
     <div class="wrap center">
-      <h2>Pick your plan.</h2>
-      <p class="lede">Buy once and keep it, or go Pro for every account you run.</p>
+      <h2>Try it free. Then pick your plan.</h2>
+      <p class="lede">Every download starts with 3 days of everything, multiple accounts included. Keep it with a one-time license, or go Pro for every account you run.</p>
+      <p style="margin-top:20px"><a class="btn download" href="/apps/oneinbox/download/">Download free trial</a></p>
       <div class="plans">
         <div class="price">
           <p class="plan-name">Early access</p>
@@ -339,7 +343,7 @@
           <a class="btn buy" data-plan="pro-yearly" id="buy-pro" href="#pricing">Get Pro</a>
         </div>
       </div>
-      <p class="faint" style="margin-top:18px">Secure checkout by Dodo Payments. Taxes calculated at checkout. The download link and license key arrive by email.</p>
+      <p class="faint" style="margin-top:18px">Secure checkout by Dodo Payments. Taxes calculated at checkout. Your license key arrives by email: paste it into OneInbox → Settings → License.</p>
     </div>
   </section>
 
@@ -348,7 +352,9 @@
       <h2 class="center">Questions</h2>
       <div class="faq">
         <details><summary>What do I need?</summary><p>A Mac running macOS 15 Sequoia or later, Apple silicon or Intel.</p></details>
-        <details><summary>How do I get the app after paying?</summary><p>Right after checkout you get an email from Dodo Payments with a download link for the OneInbox installer (a .dmg file). You can get fresh links any time from the customer portal linked in that email.</p></details>
+        <details><summary>Is there a free trial?</summary><p>Yes. Download OneInbox and you get every feature, including multiple accounts, free for 3 days. No card, no sign-up.</p></details>
+        <details><summary>What happens when the trial ends?</summary><p>OneInbox asks you to pick a plan. Your connected apps, accounts and settings are kept, so everything comes right back when you paste your license key.</p></details>
+        <details><summary>How do I unlock it after paying?</summary><p>Right after checkout you get an email from Dodo Payments with your license key (and a download link). Open OneInbox → Settings → License, paste the key, and you're done. One key works on up to 3 of your Macs.</p></details>
         <details><summary>How does iMessage work?</summary><p>OneInbox reads your Messages history on your Mac and sends replies through the Messages app. macOS asks you once to allow Full Disk Access. Nothing is uploaded anywhere.</p></details>
         <details><summary>How do WhatsApp, Instagram, Messenger and Discord work?</summary><p>OneInbox runs each service's official web app inside its own tab and collects new-message notifications into your inbox. You sign in once, the same way you would in a browser.</p></details>
         <details><summary>Is there any setup for Telegram or Slack?</summary><p>Only if you want them native. They work as web apps out of the box. For native chats, Telegram needs a free API key from Telegram, and Slack needs a small private Slack app. OneInbox walks you through each step.</p></details>
