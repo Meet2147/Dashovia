@@ -73,6 +73,58 @@
   .center { text-align:center; }
   .center .lede { max-width:32em; margin:16px auto 0; }
 
+
+  /* Features: bento */
+  .eyebrow { font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px; }
+  .bento { display:grid; gap:16px; margin-top:52px; grid-template-columns:1fr; }
+  @media (min-width: 880px) {
+    .bento { grid-template-columns:repeat(3, 1fr); }
+    .tile.wide { grid-column:span 2; display:grid; grid-template-columns:1fr 1.15fr; gap:28px; align-items:center; }
+  }
+  .tile { position:relative; overflow:hidden; background:linear-gradient(180deg, var(--card), color-mix(in srgb, var(--card) 70%, var(--bg))); border:1px solid var(--line); border-radius:24px; padding:28px; text-align:left; }
+  .tile h3 { font-size:21px; margin:14px 0 8px; display:flex; align-items:center; gap:10px; }
+  .tile p { color:var(--ink-2); font-size:16px; line-height:1.5; }
+  .tile .fine { color:var(--ink-3); font-size:14px; margin-top:12px; }
+  .tile.slim h3 { font-size:18px; }
+  .tile.slim p { font-size:15px; }
+  .ico { width:40px; height:40px; border-radius:11px; display:inline-grid; place-items:center; background:var(--soft); border:1px solid var(--line); }
+  .ico svg { width:22px; height:22px; fill:none; stroke:var(--ink); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .badge { font-size:12px; font-weight:600; color:var(--accent); border:1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius:999px; padding:2px 9px; letter-spacing:0; }
+  .viz { margin-top:20px; }
+  .tile.wide .viz { margin-top:0; }
+
+  /* app colour chips: the only colour, and only as identifiers */
+  .app { width:14px; height:14px; border-radius:4px; display:inline-block; flex:none; }
+  .app.im { background:#0A7AFF; } .app.sl { background:#8C3990; } .app.wa { background:#25C267; } .app.tg { background:#2AA1E0; }
+
+  .viz.inbox { background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:6px; box-shadow:0 18px 40px -24px rgba(0,0,0,.6); }
+  .viz.inbox .row { display:grid; grid-template-columns:8px 30px 14px auto 1fr auto; align-items:center; gap:10px; padding:10px; border-radius:10px; font-size:14px; }
+  .viz.inbox .row + .row { border-top:1px solid var(--line); border-radius:0; }
+  .viz.inbox .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); }
+  .viz.inbox .read .dot { opacity:0; }
+  .viz.inbox .read b { font-weight:500; color:var(--ink-2); }
+  .viz.inbox .av { width:30px; height:30px; border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:600; color:#fff; background:linear-gradient(#a7a7ad, #85858c); }
+  .viz.inbox b { font-weight:600; white-space:nowrap; }
+  .viz.inbox em { font-style:normal; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .viz.inbox time { color:var(--ink-3); font-size:12px; }
+
+  .viz.keys { display:flex; align-items:center; gap:6px; }
+  kbd { font:600 15px/1 -apple-system, BlinkMacSystemFont, sans-serif; min-width:38px; height:38px; display:inline-grid; place-items:center; padding:0 10px; border-radius:9px; color:var(--ink); background:var(--soft); border:1px solid var(--line); box-shadow:0 2px 0 var(--line); }
+  .through { color:var(--ink-3); padding:0 4px; }
+
+  .viz.chat { display:flex; flex-direction:column; gap:6px; font-size:14px; }
+  .viz.chat span { max-width:82%; padding:8px 12px; border-radius:16px; line-height:1.35; }
+  .viz.chat .in { align-self:flex-start; background:var(--soft); color:var(--ink); border-bottom-left-radius:6px; }
+  .viz.chat .out { align-self:flex-end; background:var(--accent); color:#fff; border-bottom-right-radius:6px; }
+
+  .viz.accounts { background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:10px; font-size:14px; box-shadow:0 18px 40px -24px rgba(0,0,0,.6); }
+  .viz.accounts .acc { display:flex; align-items:center; gap:10px; padding:7px 8px; border-radius:8px; color:var(--ink-2); }
+  .viz.accounts .head { color:var(--ink); font-weight:600; }
+  .viz.accounts .head:not(:first-child) { margin-top:6px; }
+  .viz.accounts .acc:not(.head) { padding-left:32px; }
+  .viz.accounts .acc:nth-child(2) { background:var(--soft); color:var(--ink); }
+  .viz.accounts .ring { width:14px; height:14px; border-radius:50%; border:1.5px solid var(--ink-3); }
+  .viz.accounts .n { margin-left:auto; font-size:12px; color:var(--ink-3); background:var(--soft); border-radius:999px; padding:1px 8px; }
   .split { display:grid; gap:44px; align-items:center; }
   @media (min-width: 900px) { .split { grid-template-columns:.9fr 1.1fr; } }
   .split .shot { margin:0; }
@@ -153,17 +205,85 @@
   </header>
 
   <section id="features">
-    <div class="wrap center">
-      <h2>Built like it shipped with your Mac.</h2>
-      <p class="lede">No neon, no noise. Just your conversations, in the order they happened.</p>
-      <div class="grid" style="text-align:left">
-        <div class="card"><h3>One inbox</h3><p>New messages from every app land in a single feed, grouped by time. Filter by app or unread in one click.</p></div>
-        <div class="card"><h3>Reply in place</h3><p>iMessage, Telegram and Slack open as native chats. Read and reply without switching apps.</p></div>
-        <div class="card"><h3>Never miss a thing</h3><p>One badge, one menu bar icon, one set of notifications. Jump between apps with ⌘1 to ⌘7.</p></div>
-        <div class="card"><h3>Private by design</h3><p>No OneInbox servers and no accounts. Your messages go straight between your Mac and each service.</p></div>
-        <div class="card"><h3>Locked down</h3><p>Keys stay in your Mac's Keychain. Telegram data is encrypted on disk. Pages that leave a service are clearly flagged.</p></div>
-        <div class="card"><h3>Every account you run</h3><p>With Pro, add a second WhatsApp, every client's Slack or all your Instagram accounts. Each stays signed in on its own.</p></div>
-        <div class="card"><h3>Signed by Apple</h3><p>Signed with a Developer ID and notarized by Apple, so it opens like any app you trust.</p></div>
+    <div class="wrap">
+      <div class="center">
+        <p class="eyebrow">Why OneInbox</p>
+        <h2>Built like it shipped with your Mac.</h2>
+        <p class="lede">No neon, no noise. Just your conversations, in the order they happened.</p>
+      </div>
+
+      <div class="bento">
+        <!-- One inbox: large -->
+        <article class="tile wide">
+          <div class="tile-copy">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13l2.5-7h11L20 13v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4 13h4.5l1.5 2.5h4l1.5-2.5H20"/></svg></span>
+            <h3>One inbox for everything</h3>
+            <p>New messages from all seven apps land in a single feed, grouped by time. Filter by app or unread in one click.</p>
+          </div>
+          <div class="viz inbox" aria-hidden="true">
+            <div class="row"><i class="dot"></i><span class="av">MP</span><span class="app im"></span><b>Maya Patel</b><em>are we still on for tonight?</em><time>now</time></div>
+            <div class="row"><i class="dot"></i><span class="av">D</span><span class="app sl"></span><b>#design</b><em>can someone review the flow?</em><time>3m</time></div>
+            <div class="row"><i class="dot"></i><span class="av">F</span><span class="app wa"></span><b>Family</b><em>photos from the weekend</em><time>12m</time></div>
+            <div class="row read"><i class="dot"></i><span class="av">LM</span><span class="app tg"></span><b>Leo Martins</b><em>voice note · 0:42</em><time>2h</time></div>
+          </div>
+        </article>
+
+        <!-- Shortcuts -->
+        <article class="tile">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span>
+          <h3>Never miss a thing</h3>
+          <p>One badge, one menu bar icon, one set of notifications.</p>
+          <div class="viz keys" aria-hidden="true">
+            <kbd>⌘</kbd><kbd>1</kbd><span class="through">…</span><kbd>⌘</kbd><kbd>7</kbd>
+          </div>
+          <p class="fine">Jump to any app from the keyboard.</p>
+        </article>
+
+        <!-- Reply in place -->
+        <article class="tile">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+          <h3>Reply in place</h3>
+          <p>iMessage, Telegram and Slack open as native chats.</p>
+          <div class="viz chat" aria-hidden="true">
+            <span class="in">are we still on for tonight?</span>
+            <span class="out">ramen at 8? my treat</span>
+            <span class="in">deal!! see you there</span>
+          </div>
+        </article>
+
+        <!-- Accounts: large -->
+        <article class="tile wide pro-tile">
+          <div class="tile-copy">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.7-3.3 3.1-5 6-5s5.3 1.7 6 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.4.2 4.3 1.8 5 4.8"/></svg></span>
+            <h3>Every account you run <span class="badge">Pro</span></h3>
+            <p>Work and personal WhatsApp, every client's Slack, all your Instagram accounts. Each one stays signed in on its own and never mixes with the others.</p>
+          </div>
+          <div class="viz accounts" aria-hidden="true">
+            <div class="acc head"><span class="app wa"></span>WhatsApp</div>
+            <div class="acc"><span class="ring"></span>Personal<span class="n">3</span></div>
+            <div class="acc"><span class="ring"></span>Work<span class="n">1</span></div>
+            <div class="acc head"><span class="app sl"></span>Slack</div>
+            <div class="acc"><span class="ring"></span>Acme Studio<span class="n">5</span></div>
+            <div class="acc"><span class="ring"></span>Freelance</div>
+          </div>
+        </article>
+
+        <!-- Trust row -->
+        <article class="tile slim">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+          <h3>Private by design</h3>
+          <p>No OneInbox servers, no accounts. Messages go straight between your Mac and each service.</p>
+        </article>
+        <article class="tile slim">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></span>
+          <h3>Locked down</h3>
+          <p>Keys live in your Keychain, Telegram data is encrypted on disk, and pages that leave a service are flagged.</p>
+        </article>
+        <article class="tile slim">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 1.6 2.6-.2.9 2.5 2.3 1.2-.6 2.6 1.1 2.4-2 1.7-.2 2.6-2.6.4-1.6 2.1-2.4-1-2.4 1-1.6-2.1-2.6-.4-.2-2.6-2-1.7 1.1-2.4-.6-2.6 2.3-1.2.9-2.5 2.6.2z"/><path d="M8.7 12.2l2.2 2.2 4.4-4.6"/></svg></span>
+          <h3>Signed by Apple</h3>
+          <p>Developer ID signed and notarized, so it opens like any app you trust.</p>
+        </article>
       </div>
     </div>
   </section>
