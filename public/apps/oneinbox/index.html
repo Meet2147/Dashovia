@@ -27,7 +27,8 @@
   body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing:antialiased; }
   a { color:var(--accent); text-decoration:none; }
   a:hover { text-decoration:underline; }
-  img { max-width:100%; height:auto; display:block; }
+  img, video { max-width:100%; height:auto; display:block; }
+  .shot video { width:100%; background:#1C1C1E; }
   .wrap { max-width:1080px; margin:0 auto; padding:0 22px; }
   h1, h2, h3 { margin:0; letter-spacing:-0.022em; line-height:1.08; font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
   h1 { font-size:clamp(44px, 7vw, 80px); font-weight:700; letter-spacing:-0.035em; }
@@ -132,7 +133,11 @@
         <span>Messenger</span><span>Telegram</span><span>Slack</span><span>Discord</span>
       </div>
       <div class="shot">
-        <img src="/apps/oneinbox/inbox.jpg" width="1200" height="800" alt="The OneInbox window: a sidebar of apps with unread counts, and an inbox listing new messages from iMessage, WhatsApp, Slack, Messenger, Instagram and Telegram.">
+        <video id="demo" src="/apps/oneinbox/demo.mp4" poster="/apps/oneinbox/inbox.jpg" width="1200" height="800"
+               autoplay muted loop playsinline preload="auto"
+               aria-label="OneInbox in use: the unified inbox, filtering to unread messages, then replying in an iMessage chat.">
+          <img src="/apps/oneinbox/inbox.jpg" width="1200" height="800" alt="The OneInbox window: a sidebar of apps with unread counts, and an inbox listing new messages from iMessage, WhatsApp, Slack, Messenger, Instagram and Telegram.">
+        </video>
       </div>
     </div>
   </header>
@@ -218,6 +223,20 @@
   </div>
 </footer>
 
+<script>
+  // Respect Reduce Motion: show the still poster instead of the looping clip.
+  (function () {
+    var video = document.getElementById("demo");
+    if (!video || !window.matchMedia) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    function apply() {
+      if (reduce.matches) { video.pause(); video.removeAttribute("autoplay"); video.currentTime = 0; }
+      else { video.play().catch(function () {}); }
+    }
+    apply();
+    if (reduce.addEventListener) reduce.addEventListener("change", apply);
+  })();
+</script>
 <script>
   // Dodo Payments checkout. Set PRODUCT_ID to the live product ID from the Dodo dashboard.
   (function () {
