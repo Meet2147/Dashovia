@@ -5,6 +5,15 @@
     <link>https://www.dashovia.com/apps/oneinbox/</link>
     <language>en</language>
     <item>
+      <title>OneInbox 0.1.1</title>
+      <pubDate>Sat, 28 Nov 2026 07:47:50 GMT</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Instagram, WhatsApp, Messenger and the other apps now open in English by default. You can switch back to your Mac&#x27;s language in Settings → General.</p>]]></description>
+      <enclosure url="https://github.com/Meet2147/Dashovia/releases/download/oneinbox-v0.1.1-b3/OneInbox-0.1.1.dmg" sparkle:edSignature="5EYzPqSgU/7cGejMkaqii2YlO5CqnwZqbkJ5jOPm11r6frjRP/oJRO+PlVlp8VkOhO0j4kp0+rmVjqWkDlhBBw==" length="43288149" type="application/octet-stream"/>
+    </item>
+    <item>
       <title>OneInbox 0.1.0</title>
       <pubDate>Fri, 27 Nov 2026 18:14:06 GMT</pubDate>
       <sparkle:version>2</sparkle:version>
